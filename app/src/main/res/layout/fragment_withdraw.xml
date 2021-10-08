@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dnapayments.presentation.main.MainViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                tools:context=".ui.ui.withdraw.WithDrawFragment">
+
+                <TextView
+                    android:id="@+id/my_balance_title"
+                    style="@style/Header"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:text="@string/balance_menu"
+                    app:layout_constraintEnd_toStartOf="@id/my_balance_history"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/my_balance_history"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:fontFamily="@font/uber_move_bold"
+                    android:gravity="end"
+                    android:singleLine="true"
+                    android:text="@string/with_draw_page_balance_history_title"
+                    android:textColor="#ff605c"
+                    android:textSize="19sp"
+                    app:layout_constraintBottom_toBottomOf="@id/my_balance_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/my_balance_title"
+                    app:layout_constraintTop_toTopOf="@id/my_balance_title" />
+
+                <LinearLayout
+                    android:id="@+id/staticLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/my_balance_title"
+                    app:layout_constraintStart_toStartOf="@+id/my_balance_title"
+                    app:layout_constraintTop_toBottomOf="@+id/my_balance_title"
+                    app:layout_constraintVertical_bias="0.04000002"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/balance_amount_with_draw_page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/uber_move_bold"
+                        android:text='@{String.valueOf(viewModel.profile.walletBalance)}'
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="30sp"
+                        tools:text="12 500 \u20b8" />
+
+                    <ImageView
+                        android:id="@+id/refresh"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_refresh" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/staticLayout">
+
+                    <Button
+                        android:id="@+id/choose_card"
+                        style="@style/Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:drawableTint="@color/white"
+                        android:onClick="@{() -> viewModel.getCardList()}"
+                        android:text="@{viewModel.selectedCard}"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.155"
+                        tools:targetApi="m" />
+
+                    <LinearLayout
+                        android:id="@+id/container"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_56sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:background="@drawable/white_background"
+                        android:elevation="@dimen/_8sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/_4sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/choose_card">
+
+                        <EditText
+                            android:id="@+id/with_draw_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_tenge_sign"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/uber_move_bold"
+                            android:gravity="center"
+                            android:hint="@string/amount_hint"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:maxLength="6"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onAmountChanged()}"
+                            android:text="@={viewModel.amount}"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="33sp"
+                            tools:ignore="RtlCompat" />
+
+                        <TextView
+                            android:id="@+id/amountFee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_500"
+                            android:gravity="center"
+                            android:text="@{viewModel.commission}"
+                            android:textColor="@color/red"
+                            android:visibility="@{viewModel.commission.isEmpty() ?  View.GONE : View.VISIBLE}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/with_draw_amount"
+                            tools:text="Комиссия 130 \u20b8" />
+                    </LinearLayout>
+
+
+                    <ProgressBar
+                        android:id="@+id/login_progress_bar"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@+id/withdraw"
+                        app:layout_constraintEnd_toEndOf="@+id/withdraw"
+                        app:layout_constraintTop_toTopOf="@+id/withdraw" />
+
+                    <Button
+                        android:id="@+id/withdraw"
+                        style="@style/Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginHorizontal="0dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:layout_marginEnd="0dp"
+                        android:onClick="@{() -> viewModel.onClick()}"
+                        android:text="@{viewModel.withdrawText, default = @string/calculate_commission}"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/container" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

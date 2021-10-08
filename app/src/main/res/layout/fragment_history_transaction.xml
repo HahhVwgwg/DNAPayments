@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dnapayments.presentation.history_detail.HistoryDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F8F8F8"
+            tools:context=".ui.ui.withdraw.HistoryActivity">
+
+            <RelativeLayout
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/amount"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/rubik_500"
+                    android:text="@string/total_amount"
+                    android:textColor="@color/contentTextColor"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/rubik_500"
+                    android:text="@{String.valueOf(viewModel.transaction.walletDetails.amount)}"
+                    android:textColor="@color/contentTextColor"
+                    android:textSize="36sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/item_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="240dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/static_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/created_at"
+                    android:fontFamily="@font/rubik_500"
+                    android:text="@string/date"
+                    android:textColor="@color/contentTextColor"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/created_at"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/rubik_500"
+                    android:text="@{viewModel.transaction.walletDetails.createdAt}"
+                    android:textColor="@color/contentTextColor"
+                    android:textSize="23sp"
+                    tools:text="12/20/2018" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_view"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@drawable/background_white_20"
+                android:elevation="20dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:transitionName="item_view">
+
+                <TextView
+                    android:id="@+id/transaction_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_500"
+                    android:text="@{viewModel.transaction.walletDetails.transactionDesc}"
+                    android:textColor="@color/grey"
+                    android:textSize="18sp"
+                    tools:text="Вывод средств на водителя" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@string/card_name"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/card_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@{viewModel.transaction.walletDetails.cardName}"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        tools:text="Основной" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@string/id"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/transaction_alias"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@{String.valueOf(viewModel.transaction.walletDetails.id)}"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        tools:text="FSEND000001" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@string/card_number"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/card_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@{viewModel.transaction.walletDetails.cardNumber}"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        tools:text="************6039" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@string/commission"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/commission"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@{String.valueOf(viewModel.transaction.walletDetails.commissionDriver)}"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        tools:text="20:19" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@string/transaction_time"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/exact_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@{viewModel.transaction.walletDetails.createdAt}"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        tools:text="20:19" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@string/open_balance"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/open_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@{String.valueOf(viewModel.transaction.walletDetails.openBalance)}"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        tools:text="1000" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@string/close_balance"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/close_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@{String.valueOf(viewModel.transaction.walletDetails.closeBalance)}"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        tools:text="1000" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:text="@string/status"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/rubik_500"
+                        android:padding="3dp"
+                        android:text="@{viewModel.transaction.walletDetails.status}"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        tools:text="Завершен" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/header"
+            style="@style/Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:gravity="center"
+            android:text="@string/transaction_detail"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/header"
+            app:tint="@color/contentTextColor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

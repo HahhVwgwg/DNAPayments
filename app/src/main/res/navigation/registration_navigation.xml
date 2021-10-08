@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/initialFragment">
+    <fragment
+        android:id="@+id/initialFragment"
+        android:name="com.dnapayments.presentation.registration.AuthorizationFragment"
+        android:label="EnterPhoneNumberAndCheckInDatabase"
+        tools:layout="@layout/fragment_authorization">
+        <action
+            android:id="@+id/action_initialFragment_to_mobizonFragment"
+            app:destination="@id/mobizonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mobizonFragment"
+        android:name="com.dnapayments.presentation.registration.MobizonFragment"
+        android:label="MobizonFragment"
+        tools:layout="@layout/fragment_mobizon">
+        <!--        <action-->
+        <!--            android:id="@+id/action_mobizonFragment_chooseParkFragment"-->
+        <!--            app:destination="@id/chooseParkFragment" />-->
+    </fragment>
+    <!--    <fragment-->
+    <!--        android:id="@+id/chooseParkFragment"-->
+    <!--        android:name="com.dataplus.tabyspartner.ui.ui.authorization.ChooseParkFragment"-->
+    <!--        android:label="ChooseParkFragment"-->
+    <!--        tools:layout="@layout/fragment_choose_park" />-->
+
+</navigation>

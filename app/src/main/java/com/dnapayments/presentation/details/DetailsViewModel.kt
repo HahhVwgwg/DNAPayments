@@ -25,7 +25,7 @@ class DetailsViewModel(private val repository: CharacterDetailedRepository) : Ba
                 }
                 Resource.Status.ERROR -> {
                     response.errorMessage.let {
-                        error.value = it
+                        errorString.value = it
                     }
                 }
                 else -> {

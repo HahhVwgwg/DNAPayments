@@ -26,4 +26,30 @@
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#11CFC5</color>
     <color name="bg_main">#F6F8FB</color>
+    <color name="sub_header">#566977</color>
+    <color name="header">#1E1F20</color>
+    <color name="hint">#BEC4CB</color>
+    <color name="dialog_title">#4b4b4b</color>
+    <color name="dialog_cancel_btn">#009689</color>
+    <color name="color_text_hyperlink">#0000FF</color>
+    <color name="color_text_green">#00A451</color>
+    <color name="color_text_expired">#B71F1F</color>
+
+
+    <!-- colors for dots indicator -->
+    <color name="indicator_selected">#00A451</color>
+    <color name="indicator_unselected">#4D00A451</color>
+
+    <!-- colors for text and background, which used in item_on_boarding file and for custom status bar-->
+    <color name="boarding_text">#222339</color>
+    <color name="page_bg">#191b2a</color>
+
+    <color name="light_gray">#D3D3D3</color>
+    <color name="grey_news_date">#8B949E</color>
+    <color name="grey_bg_buy_card_recommend">#D8D8D8</color>
+    <color name="redDark">#FF453A</color>
+    <color name="redDarkWithOpacity">#99FF453A</color>
+    <color name="hintSecond">#BFC4CA</color>
+    <color name="background_btn_not_enabled">#99A2A3A2</color>
+    <color name="light_green">#727373</color>
 </resources>

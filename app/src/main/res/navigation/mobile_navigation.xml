@@ -3,21 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation.xml"
-    app:startDestination="@id/navigation_characters">
+    app:startDestination="@id/navigation_main">
 
     <fragment
-        android:id="@+id/navigation_characters"
-        android:name="com.dnapayments.presentation.characters.CharactersFragment"
-        android:label="CharactersFragment"
-        tools:layout="@layout/fragment_characters">
-        <action
-            android:id="@+id/action_characters_to_details"
-            app:destination="@id/navigation_details"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
-    </fragment>
+        android:id="@+id/navigation_main"
+        android:name="com.dnapayments.presentation.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main" />
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -25,9 +17,55 @@
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
     <fragment
+        android:id="@+id/navigation_history_detail"
+        android:name="com.dnapayments.presentation.history_detail.HistoryDetailFragment"
+        android:label="HistoryDetailFragment"
+        tools:layout="@layout/fragment_history_transaction" />
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.dnapayments.presentation.history.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_history_to_detailed"
+            app:destination="@id/navigation_history_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_withdraw"
+        android:name="com.dnapayments.presentation.withdraw.WithdrawFragment"
+        android:label="WithdrawFragment"
+        tools:layout="@layout/fragment_withdraw">
+        <action
+            android:id="@+id/action_withdraw_to_history"
+            app:destination="@id/navigation_history"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_withdraw_to_add_card"
+            app:destination="@id/navigation_add_card"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
         android:id="@+id/navigation_details"
         android:name="com.dnapayments.presentation.details.DetailsFragment"
         android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details" />
+
+    <fragment
+        android:id="@+id/navigation_add_card"
+        android:name="com.dnapayments.presentation.add_card.AddCardFragment"
+        android:label="AddCardFragment"
         tools:layout="@layout/fragment_details" />
 
     <fragment

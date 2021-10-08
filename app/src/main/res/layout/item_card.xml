@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_9sdp"
+    android:layout_marginVertical="@dimen/_8sdp"
+    android:background="@drawable/background_white_20"
+    android:elevation="@dimen/_4sdp"
+    android:paddingVertical="8dp"
+    app:cardCornerRadius="@dimen/_11sdp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:id="@+id/card_item_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_credit_card" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardItemText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/card_item_logo"
+        app:layout_constraintStart_toEndOf="@id/card_item_logo"
+        app:layout_constraintTop_toTopOf="@id/card_item_logo">
+
+        <TextView
+            android:id="@+id/card_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_500"
+            android:textColor="@color/contentTextColor"
+            tools:text="Каспи Голд" />
+
+        <TextView
+            android:id="@+id/card_item_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_500"
+            android:textColor="@color/sub_header"
+            tools:text="**** **** **** 4141" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/deleteCard_logo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/cardItemText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardItemText"
+        app:layout_constraintTop_toTopOf="@id/cardItemText">
+
+        <ImageView
+            android:id="@+id/deleteCardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:contentDescription="@null"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/contentTextColor" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

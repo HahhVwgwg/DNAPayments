@@ -7,8 +7,8 @@ import com.dnapayments.utils.base.BaseBindingFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsFragment :
-    BaseBindingFragment<FragmentDetailsBinding>(R.layout.fragment_details) {
-    private val vm: DetailsViewModel by viewModel()
+    BaseBindingFragment<FragmentDetailsBinding, DetailsViewModel>(R.layout.fragment_details) {
+    override val vm: DetailsViewModel by viewModel()
     override fun initViews(savedInstanceState: Bundle?) {
         binding?.apply {
             viewModel = vm

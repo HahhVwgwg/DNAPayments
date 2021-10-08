@@ -29,7 +29,7 @@ class CharacterViewModel(private val repository: CharacterRepository) : BaseView
                 }
                 Resource.Status.ERROR -> {
                     response.errorMessage.let {
-                        error.value = it
+                        errorString.value = it
                     }
 
                 }

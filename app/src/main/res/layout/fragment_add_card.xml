@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dnapayments.presentation.add_card.AddCardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/header"
+            style="@style/Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:gravity="center"
+            android:text="@string/add_card_title"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/header"
+            app:tint="@color/contentTextColor" />
+
+        <EditText
+            android:id="@+id/card_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_51sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_41sdp"
+            android:background="@drawable/background_white_20"
+            android:elevation="@dimen/_8sdp"
+            android:fontFamily="@font/uber_move_bold"
+            android:hint="@string/enter_card_name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:text="@={viewModel.cardName}"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+        <EditText
+            android:id="@+id/card_number"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_51sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/background_white_20"
+            android:elevation="@dimen/_8sdp"
+            android:fontFamily="@font/uber_move_bold"
+            android:hint="@string/add_card_number"
+            android:importantForAutofill="no"
+            android:digits="0123456789 "
+            android:inputType="phone"
+            android:maxLength="19"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:text="@={viewModel.cardId}"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintTop_toBottomOf="@id/card_name" />
+
+        <EditText
+            android:id="@+id/card_number_repeat"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_51sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/background_white_20"
+            android:elevation="@dimen/_8sdp"
+            android:digits="0123456789 "
+            android:fontFamily="@font/uber_move_bold"
+            android:hint="@string/repeat_card_number"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:maxLength="19"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:text="@={viewModel.cardIdRepeat}"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintTop_toBottomOf="@id/card_number" />
+
+        <Button
+            android:id="@+id/generate_btn"
+            style="@style/Button"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="@{() -> viewModel.addCard()}"
+            android:text="@string/add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
