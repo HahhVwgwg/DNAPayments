@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/region_secondary">
+
+        <ImageView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:contentDescription="@null"
+            android:src="@drawable/register_logo"
+            app:layout_constraintBottom_toTopOf="@id/container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_background_bottom_sheet"
+            android:elevation="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_38sdp"
+                android:fontFamily="@font/rubik_500"
+                android:gravity="center_horizontal"
+                android:text="@string/welcome"
+                android:textColor="@color/main_black"
+                android:textSize="@dimen/_18ssp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/enter_password_and_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/rubik_500"
+                android:gravity="center_horizontal"
+                android:text="@string/enter_password_and_login"
+                android:textColor="@color/main_black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintTop_toBottomOf="@id/welcome" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/enter_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                app:layout_constraintTop_toBottomOf="@id/enter_password_and_login">
+
+                <EditText
+                    android:id="@+id/login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/rubik_500"
+                    android:hint="@string/your_login"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:paddingVertical="@dimen/_15sdp"
+                    android:textColor="@color/main_black"
+                    android:textColorHint="@color/region_secondary"
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/enter_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_24sdp"
+                app:layout_constraintTop_toBottomOf="@id/enter_login">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/rubik_500"
+                    android:hint="@string/enter_password"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"
+                    android:paddingVertical="@dimen/_15sdp"
+                    android:textColor="@color/main_black"
+                    android:textColorHint="@color/region_secondary"
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/register"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_38sdp"
+                android:text="@string/register"
+                app:layout_constraintTop_toBottomOf="@id/enter_password" />
+
+            <TextView
+                android:id="@+id/join"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_24sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:fontFamily="@font/rubik_500"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="@string/join"
+                android:textColor="@color/bg_color"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/register" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

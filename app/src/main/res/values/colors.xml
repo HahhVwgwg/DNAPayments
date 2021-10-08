@@ -26,4 +26,10 @@
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#11CFC5</color>
     <color name="bg_main">#F6F8FB</color>
+    <color name="bg_color">#45877D</color>
+    <color name="main_black">#1B252C</color>
+    <color name="region_secondary">#EBECEC</color>
+    <color name="secondary_grey">#C4C4C4</color>
+    <color name="divider_color">#F2F2F2</color>
+    <color name="grey_profile_detail">#8F8F8F</color>
 </resources>

@@ -2,7 +2,6 @@ package com.dnapayments.presentation.settings
 
 import android.os.Bundle
 import com.dnapayments.R
-import com.dnapayments.databinding.FragmentCharactersBinding
 import com.dnapayments.databinding.FragmentSettingsBinding
 import com.dnapayments.utils.base.BaseBindingFragment
 

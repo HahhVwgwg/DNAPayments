@@ -9,7 +9,7 @@
         android:id="@+id/navigation_characters"
         android:name="com.dnapayments.presentation.characters.CharactersFragment"
         android:label="CharactersFragment"
-        tools:layout="@layout/fragment_characters">
+        tools:layout="@layout/fragment_course">
         <action
             android:id="@+id/action_characters_to_details"
             app:destination="@id/navigation_details"

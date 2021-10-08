@@ -41,7 +41,7 @@
             android:background="@color/white"
             android:elevation="20dp"
             android:fitsSystemWindows="false"
-            app:itemIconTint="@drawable/navigation_view_colored"
+            app:itemIconTint="@drawable/tint_bottom_navigation"
             app:itemTextColor="@drawable/navigation_view_colored"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"

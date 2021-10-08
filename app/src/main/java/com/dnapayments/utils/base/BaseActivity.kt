@@ -2,12 +2,16 @@ package com.dnapayments.utils.base;
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.dnapayments.R
 
 abstract class BaseActivity : AppCompatActivity(), IResourcesIDListener {
 
@@ -17,6 +21,24 @@ abstract class BaseActivity : AppCompatActivity(), IResourcesIDListener {
 
     private var dialogForKMFLoader: Dialog? = null
     private var isShowMsg = false
+
+    fun showAlert(msg: String) {
+        if (isShowMsg) return
+        Dialog(this).apply {
+            this.setContentView(R.layout.layout_alert)
+            this.setCancelable(false)
+            this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            this.setCanceledOnTouchOutside(false)
+            this.findViewById<Button>(R.id.btnClose).setOnClickListener {
+                isShowMsg = false
+                dismiss()
+            }
+            this.findViewById<android.widget.TextView>(R.id.dialogContent).text = msg
+            this.show()
+            isShowMsg = true
+        }
+    }
+
 
     //  Initialize all widget in layout
     protected abstract fun initViews(savedInstanceState: Bundle?)

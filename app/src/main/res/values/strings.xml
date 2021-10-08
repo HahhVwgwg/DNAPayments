@@ -1,11 +1,23 @@
 <resources>
-    <string name="app_name">DNAPayments</string>
-    <string name="nav_characters">Character</string>
-    <string name="profile">Profile</string>
-    <string name="settings">Settings</string>
-    <string name="check_internet_connection">Check internet connection</string>
-    <string name="something_went_wrong">Something went wrong</string>
-    <string name="characters">Characters</string>
+    <string name="app_name">Miras</string>
+    <string name="nav_characters">Курсы</string>
+    <string name="profile">Мой профиль</string>
+    <string name="settings">Настройки</string>
+    <string name="check_internet_connection">Проверьте интернет-соединение</string>
+    <string name="something_went_wrong">Что-то пошло не так</string>
+    <string name="characters">Курсы</string>
     <string name="character_size">Character list size is %d</string>
     <string name="detailed">Detailed Character</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="enter_password_and_login">Введите логин и пароль для входа в приложения</string>
+    <string name="register">Войти</string>
+    <string name="join">Записаться</string>
+    <string name="your_login">Ваш логин</string>
+    <string name="your_name">Ваше имя</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="ok">Понятно</string>
+    <string name="fill_fields">Заполните все поля</string>
+    <string name="birthday">Дата регистрации</string>
+    <string name="rate_us">Оценить приложение</string>
+    <string name="share_app">Поделиться приложением</string>
 </resources>

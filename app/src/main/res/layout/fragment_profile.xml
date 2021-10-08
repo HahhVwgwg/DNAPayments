@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/header"
-            style="@style/Header"
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:title="@{@string/profile}" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_18sdp"
-            android:text="@string/profile"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="@dimen/marginTop"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <include
+                layout="@layout/item_profile_detail"
+                app:data="@{@string/your_login}"
+                app:drawable="@{@drawable/ic_home}"
+                app:title="@{@string/your_login}" />
+
+            <include
+                layout="@layout/item_profile_detail"
+                app:data="@{@string/birthday}"
+                app:drawable="@{@drawable/ic_date}"
+                app:title="@{@string/birthday}" />
+
+            <include
+                layout="@layout/item_profile_detail"
+                app:data="@{@string/your_name}"
+                app:drawable="@{@drawable/ic_profile}"
+                app:title="@{@string/your_name}" />
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,12 +3,12 @@ package com.dnapayments.presentation.characters
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
 import com.dnapayments.R
-import com.dnapayments.databinding.FragmentCharactersBinding
+import com.dnapayments.databinding.FragmentCourseBinding
 import com.dnapayments.utils.base.BaseBindingFragment
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class CharactersFragment :
-    BaseBindingFragment<FragmentCharactersBinding>(R.layout.fragment_characters) {
+    BaseBindingFragment<FragmentCourseBinding>(R.layout.fragment_course) {
     private var characterAdapter: CharacterAdapter? = null
     private val vm: CharacterViewModel by sharedViewModel()
     override fun initViews(savedInstanceState: Bundle?) {

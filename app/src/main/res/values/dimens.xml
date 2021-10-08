@@ -3,5 +3,7 @@
     <dimen name="headerTextSize">25sp</dimen>
     <dimen name="newsMoreTextSize">12sp</dimen>
     <dimen name="loginViewsMargin">20dp</dimen>
+    <dimen name="marginHorizontal">@dimen/_18sdp</dimen>
+    <dimen name="marginTop">@dimen/_15sdp</dimen>
 
 </resources>
