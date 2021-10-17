@@ -9,7 +9,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.dnapayments"
+        applicationId "com.miras"
         minSdk 21
         targetSdk 30
         versionCode 1
@@ -103,4 +103,8 @@ dependencies {
 
     //Image shaper
     implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
+    //refresh button
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.15.1'
 }

@@ -3,12 +3,15 @@ package com.dnapayments.utils.base
 import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.dnapayments.utils.SingleLiveData
 
 @SuppressLint("CheckResult")
 abstract class BaseViewModel : ViewModel() {
     var isLoading = MutableLiveData<Boolean>()
-    var isRefreshing = MutableLiveData<Boolean>()
-    val error = MutableLiveData<String>()
+    var isRefreshing = SingleLiveData<Boolean>()
+    val error = SingleLiveData<Int>()
+    val errorString = SingleLiveData<String>()
+    val showNetworkError = SingleLiveData<Boolean>()
     var toastMsg = MutableLiveData<String>()
     var toastMsgId = MutableLiveData<Int>()
 

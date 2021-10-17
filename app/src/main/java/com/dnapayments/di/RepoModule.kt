@@ -1,8 +1,8 @@
-import com.dnapayments.data.repository.CharacterDetailedRepository
-import com.dnapayments.data.repository.CharacterRepository
+import com.dnapayments.data.repository.MainRepository
+import com.dnapayments.data.repository.LoginRepository
 import org.koin.dsl.module
 
 val repoModule = module {
-    single { CharacterRepository(get()) }
-    single { CharacterDetailedRepository(get()) }
+    single { MainRepository(get()) }
+    single { LoginRepository(get()) }
 }

@@ -1,12 +1,16 @@
 package com.dnapayments.utils.base
 
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.dnapayments.R
 
 abstract class BaseBindingActivity<B : ViewDataBinding>(@LayoutRes private val layoutResID: Int) :
     BaseActivity() {
@@ -37,5 +41,31 @@ abstract class BaseBindingActivity<B : ViewDataBinding>(@LayoutRes private val l
     override fun onDestroy() {
         super.onDestroy()
         if (binding != null) binding = null
+    }
+
+    private var dialogForLoader: Dialog? = null
+
+    fun showLoader() {
+        this.let {
+            killDialog()
+            dialogForLoader = Dialog(this)
+            dialogForLoader?.let { dialog ->
+                dialog.setContentView(R.layout.loader)
+                dialog.setCancelable(false)
+                dialog.setCanceledOnTouchOutside(false)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.show()
+            }
+        }
+    }
+
+    fun hideLoader() {
+        dialogForLoader?.dismiss()
+        killDialog()
+    }
+
+    private fun killDialog() {
+        if (dialogForLoader != null)
+            dialogForLoader = null
     }
 }
