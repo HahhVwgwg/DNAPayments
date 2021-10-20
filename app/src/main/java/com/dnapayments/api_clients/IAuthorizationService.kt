@@ -2,6 +2,7 @@ package com.dnapayments.api_clients
 
 import com.dnapayments.data.model.Character
 import com.dnapayments.data.model.OtpResponse
+import com.dnapayments.data.model.ParkElement
 import com.dnapayments.data.model.TokenOtp
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
@@ -23,5 +24,9 @@ interface IAuthorizationService {
     @FormUrlEncoded
     @POST("/api/provider/oauth/token")
     fun loginByOtpAsync(@FieldMap params: HashMap<String, Any>): Deferred<TokenOtp>
+
+    @FormUrlEncoded
+    @POST("/api/provider/oauth/token")
+    fun getParksAsync(@FieldMap params: HashMap<String, Any>): Deferred<List<ParkElement>>
 }
 

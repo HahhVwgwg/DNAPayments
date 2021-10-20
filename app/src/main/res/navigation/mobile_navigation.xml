@@ -9,18 +9,74 @@
         android:id="@+id/navigation_main"
         android:name="com.dnapayments.presentation.main.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_to_news_details"
+            app:destination="@id/navigation_news_details"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.dnapayments.presentation.profile.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_news"
+            app:destination="@id/navigation_news"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_profile_to_knowledge"
+            app:destination="@id/navigation_knowledge"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+
+    </fragment>
     <fragment
         android:id="@+id/navigation_history_detail"
         android:name="com.dnapayments.presentation.history_detail.HistoryDetailFragment"
         android:label="HistoryDetailFragment"
         tools:layout="@layout/fragment_history_transaction" />
+    <fragment
+        android:id="@+id/navigation_knowledge"
+        android:name="com.dnapayments.presentation.knowledge.KnowledgeFragment"
+        android:label="KnowledgeFragment"
+        tools:layout="@layout/fragment_knowledge">
+        <action
+            android:id="@+id/action_knowledge_to_knowledge_details"
+            app:destination="@id/navigation_knowledge_details"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_knowledge_details"
+        android:name="com.dnapayments.presentation.knowledge_details.KnowledgeDetailsFragment"
+        android:label="KnowledgeDetailsFragment"
+        tools:layout="@layout/fragment_knowledge_details" />
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="com.dnapayments.presentation.news.NewsFragment"
+        android:label="NewsFragment"
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_news_to_news_details"
+            app:destination="@id/navigation_news_details"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.dnapayments.presentation.history.HistoryFragment"
@@ -33,7 +89,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-
     </fragment>
     <fragment
         android:id="@+id/navigation_withdraw"
@@ -73,6 +128,11 @@
         android:name="com.dnapayments.presentation.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/navigation_news_details"
+        android:name="com.dnapayments.presentation.news_details.NewsDetailsFragment"
+        android:label="NewsDetailsFragment"
+        tools:layout="@layout/fragment_news_details" />
 
 
 </navigation>

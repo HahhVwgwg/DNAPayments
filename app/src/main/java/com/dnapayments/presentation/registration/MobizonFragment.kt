@@ -8,8 +8,10 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.dnapayments.R
 import com.dnapayments.data.model.OtpResponse
+import com.dnapayments.data.model.SpendTime
 import com.dnapayments.databinding.FragmentMobizonBinding
 import com.dnapayments.presentation.activity.MainActivity
 import com.dnapayments.utils.PrefsAuth
@@ -67,8 +69,23 @@ class MobizonFragment :
                     redirectToPinCodeActivity()
                 }
             })
+            vm.request.observe(viewLifecycleOwner, {
+                otp?.let {
+                    if (otpTextView.text.toString() == it.otp) {
+                        registerByToken()
+                    } else {
+                        showMsg(getStr(R.string.entered_wrong_code_check_again))
+                    }
+                } ?: showMsg(getStr(R.string.entered_wrong_code_check_again))
+            })
+            vm.openChooseFragment.observe(viewLifecycleOwner, {
+                findNavController().navigate(R.id.action_mobizonFragment_chooseParkFragment,
+                    Bundle().apply {
+                        putString("phone", phone)
+                        putParcelable("otp", otp)
+                    })
+            })
             vm.error.observe(viewLifecycleOwner, {
-                redirectToChooseParkActivity()
             })
         }
         startSmartUserConsent()
@@ -104,6 +121,7 @@ class MobizonFragment :
 
     private fun redirectToPinCodeActivity() {
         startActivity(Intent(requireActivity(), MainActivity::class.java))
+        requireActivity().finishAffinity()
     }
 
     private fun redirectToChooseParkActivity() {

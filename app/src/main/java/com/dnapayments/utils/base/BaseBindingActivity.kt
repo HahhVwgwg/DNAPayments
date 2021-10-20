@@ -15,13 +15,13 @@ abstract class BaseBindingActivity<B : ViewDataBinding>(@LayoutRes private val l
 //        const val TAG = "BaseBindingActivity"
     }
 
-    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        if (currentFocus != null) {
-            val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(this.currentFocus!!.windowToken, 0)
-        }
-        return super.dispatchTouchEvent(ev)
-    }
+//    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+//        if (currentFocus != null) {
+//            val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//            imm.hideSoftInputFromWindow(this.currentFocus!!.windowToken, 0)
+//        }
+//        return super.dispatchTouchEvent(ev)
+//    }
 
     //  Your view data binding
     var binding: B? = null

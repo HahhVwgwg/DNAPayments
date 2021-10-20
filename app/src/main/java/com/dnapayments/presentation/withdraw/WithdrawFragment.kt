@@ -1,11 +1,13 @@
 package com.dnapayments.presentation.withdraw
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.navigation.fragment.findNavController
 import com.dnapayments.R
 import com.dnapayments.databinding.FragmentWithdrawBinding
 import com.dnapayments.presentation.choose_card.MultiChoiceBottomFragment
 import com.dnapayments.presentation.main.MainViewModel
+import com.dnapayments.presentation.pin_code.PinCodeFragment
 import com.dnapayments.utils.base.BaseBindingFragment
 import com.dnapayments.utils.showKeyboard
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -15,6 +17,7 @@ class WithdrawFragment :
     override val vm: MainViewModel by sharedViewModel()
     override fun initViews(savedInstanceState: Bundle?) {
         binding?.apply {
+            activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
             viewModel = vm
             refreshSwipe.setOnRefreshListener {
                 vm.fetchProfile()
@@ -24,8 +27,16 @@ class WithdrawFragment :
             }
             myBalanceHistory.setOnClickListener {
                 findNavController().navigate(R.id.action_withdraw_to_history)
-                vm.viewState.set(false)
             }
+            vm.showBottomSheet.observe(viewLifecycleOwner, {
+                PinCodeFragment(3) {
+                    if (it) {
+                        vm.withdraw()
+                    }
+                }.show(
+                    parentFragmentManager,
+                    null)
+            })
             vm.cards.observe(viewLifecycleOwner, { cardList ->
                 MultiChoiceBottomFragment({
                     vm.selectedCard.set(it.lastFour.toString())

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/acer/.gradle/caches/transforms-3/b7faa143e74760f7de1da7e60e2c9fde/transformed/jetified-whynotimagecarousel-2.0.5/res/drawable/carousel_default_placeholder.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/button_background_blue.xml" value="0.14074074074074075" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_document_placeholder.xml" value="0.14074074074074075" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_profile.xml" value="0.14074074074074075" />
@@ -20,42 +21,69 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/white_background.xml" value="0.14375" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/menu/navigation.xml" value="0.14375" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/background_white_20.xml" value="0.21851851851851853" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/bg_for_selector.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/bottom_sheet.xml" value="0.19537037037037036" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.19537037037037036" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/button_selected_smaller.xml" value="0.21851851851851853" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/card_chooser_btn_bbg.xml" value="0.21851851851851853" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/dot_circle_green.xml" value="0.2638888888888889" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/dot_circle_grey.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_alert.xml" value="0.21851851851851853" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_backspace.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.19537037037037036" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.2" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_biometric_data.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_coin_stack.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_credit_card.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_login_hero.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_profile.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_tenge_sign.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/ic_touch_id_black.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/light_green_rounded_nav.xml" value="0.21851851851851853" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/light_green_rounded_nav_not_active.xml" value="0.21851851851851853" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/pin_dot_off.xml" value="0.16296296296296298" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/pin_dot_on.xml" value="0.16296296296296298" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/pin_ripple.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/drawable/text_input_bg.xml" value="0.21851851851851853" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/activity_main.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/activity_register.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/activity_registration.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/activity_splash_screen.xml" value="0.275" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/bottom_fragment_call.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/bottom_fragment_choose_card.xml" value="0.16288252714708787" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/bottom_fragment_pin_code.xml" value="0.2453125" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/bottom_fragment_update.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_add_card.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_authorization.xml" value="0.275" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_choose_park.xml" value="0.275" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_details.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_history.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_history_transaction.xml" value="0.2" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_knowledge.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_knowledge_details.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_main.xml" value="0.16" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_mobizon.xml" value="0.21302083333333333" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_news.xml" value="0.215625" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_news_details.xml" value="0.24791666666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_settings.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/fragment_withdraw.xml" value="0.17592592592592593" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/item_card.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/item_character.xml" value="0.1574074074074074" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/item_choose_park.xml" value="0.275" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/item_dot.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/item_history.xml" value="0.2869791666666667" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/item_knowledge.xml" value="0.4" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/item_news.xml" value="0.20364583333333333" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/layout_msg.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/notification.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/layout/slider_item_container.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/menu/navigation.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/Mine/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />
       </map>
     </option>
   </component>

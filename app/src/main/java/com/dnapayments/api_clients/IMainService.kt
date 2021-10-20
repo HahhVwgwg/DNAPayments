@@ -2,7 +2,6 @@ package com.dnapayments.api_clients
 
 import com.dnapayments.data.model.*
 import kotlinx.coroutines.Deferred
-import retrofit2.Call
 import retrofit2.http.*
 import java.util.*
 
@@ -42,6 +41,9 @@ interface IMainService {
 
     @GET("/api/provider/notifications")
     fun getNewsAsync(): Deferred<List<NotificationElement>>
+
+    @GET("/api/provider/know_base")
+    fun getKnowBaseAsync(): Deferred<List<NotificationElement>>
 
 }
 

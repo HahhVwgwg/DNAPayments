@@ -65,6 +65,14 @@ data class ProfileOtp(
     @Expose
     val paymentType: String? = null,
 
+    @SerializedName("support_mobile")
+    @Expose
+    val supportMobile: String? = null,
+
+    @SerializedName("park_mobile")
+    @Expose
+    val parkMobile: String? = null,
+
     @SerializedName("card_count")
     @Expose
     val cardCount: Int = 0,

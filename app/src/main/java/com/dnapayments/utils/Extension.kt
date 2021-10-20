@@ -96,6 +96,17 @@ fun String.dateFormat(): String {
     )
 }
 
+fun String.dateFormatSecond(): String {
+    return SimpleDateFormat(
+        "dd/MM/yyyy",
+        Locale.getDefault()
+    ).format(
+        SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(
+            this
+        ) ?: Date()
+    )
+}
+
 fun String.isInt(): Boolean {
     return try {
         this.toInt()

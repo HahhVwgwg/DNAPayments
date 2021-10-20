@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:fontFamily="@font/rubik_500"
-                    android:text="@{viewModel.transaction.walletDetails.createdAt}"
+                    android:text="@{viewModel.transaction.walletDetails.createDate}"
                     android:textColor="@color/contentTextColor"
                     android:textSize="23sp"
                     tools:text="12/20/2018" />
@@ -144,7 +144,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:fontFamily="@font/rubik_500"
-                        android:text="@{String.valueOf(viewModel.transaction.walletDetails.id)}"
+                        android:text="@{String.valueOf(viewModel.transaction.walletDetails.transactionAlias)}"
                         android:textColor="@color/grey"
                         android:textSize="16sp"
                         tools:text="FSEND000001" />
@@ -301,7 +301,6 @@
                         android:layout_alignParentEnd="true"
                         android:fontFamily="@font/rubik_500"
                         android:padding="3dp"
-                        android:text="@{viewModel.transaction.walletDetails.status}"
                         android:textColor="@color/grey"
                         android:textSize="16sp"
                         tools:text="Завершен" />

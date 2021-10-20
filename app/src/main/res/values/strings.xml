@@ -36,8 +36,8 @@
     <string name="history_account_partner">Партнерский баланс</string>
     <string name="history_card_mask">**** **** **** %s</string>
     <string name="history_title_ref">История партнерских выводов</string>
-    <string name="go_notifications_btn_text">Уведомления</string>
-    <string name="notifications_title">Уведомления</string>
+    <string name="go_notifications_btn_text">Новости</string>
+    <string name="notifications_title">Новости</string>
     <string name="profile_app_version">Версия приложения %s</string>
     <string name="btn_uploaded_title">Новая версия приложения загружена</string>
     <string name="btn_uploaded_desc">Перезапустить</string>
@@ -74,6 +74,7 @@
     <string name="error_occurred_retry">Произошла ошибка</string>
     <string name="otmenit">Отменить</string>
     <string name="notSameError">Номера карт не совпадают</string>
+    <string name="code_not_same">Повторный код не совпадает. Пожалуйста введите заново.</string>
     <string name="income_sum">%s ₸</string>
     <string name="balance_menu">Мой счет</string>
     <string name="partners_menu">Партнерский счет</string>
@@ -105,6 +106,7 @@
     <string name="token_absent">Ваша сессия в приложении истекла. Просим перезайти заново.</string>
     <string name="news">Новости</string>
     <string name="choose_card">Выберите карту</string>
+    <string name="choose_call_number">Выберите телефон номера</string>
     <string name="error_minimum_amount">Минимальная сумма перевода 200 \u20b8</string>
     <string name="error_minimum_amount_left">На вашем балансе должно оставаться не менее 100 тг, чтобы вы могли получать "наличные" заказы.</string>
     <string name="error_not_enough_money">Не достаточно средств</string>
@@ -134,4 +136,22 @@
     <string name="repeat_card_number">Повторите номер карты</string>
     <string name="add">Добавить</string>
     <string name="card_was_deleted">Ваша карта успешно удалена</string>
+    <string name="pin_zero" translatable="false">0</string>
+    <string name="pin_one" translatable="false">1</string>
+    <string name="pin_two" translatable="false">2</string>
+    <string name="pin_three" translatable="false">3</string>
+    <string name="pin_four" translatable="false">4</string>
+    <string name="pin_five" translatable="false">5</string>
+    <string name="pin_six" translatable="false">6</string>
+    <string name="pin_seven" translatable="false">7</string>
+    <string name="pin_eight" translatable="false">8</string>
+    <string name="pin_nine" translatable="false">9</string>
+    <string name="enter_pin_code">Введите код доступа</string>
+    <string name="repeat_pin_code">Повторите код доступа</string>
+    <string name="taxi_park">Таксопарк</string>
+    <string name="support_name">Техпомощь</string>
+    <string name="more">Подробнее</string>
+    <string name="knowledge">База знаний</string>
+    <string name="update_hint">Вы пользуетесь старой версией,\n обновите приложение</string>
+    <string name="update">Обновить приложение</string>
 </resources>

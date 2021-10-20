@@ -1,9 +1,12 @@
 package com.dnapayments.presentation.main
 
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.dnapayments.BuildConfig
 import com.dnapayments.R
 import com.dnapayments.data.model.CardOtp
+import com.dnapayments.data.model.NotificationElement
 import com.dnapayments.data.model.ProfileOtp
 import com.dnapayments.data.model.SimpleResult
 import com.dnapayments.data.repository.MainRepository
@@ -14,23 +17,33 @@ import com.dnapayments.utils.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: MainRepository) : BaseViewModel() {
-    val cardId = NonNullObservableField(-1)
+    //main page
+    val viewState = NonNullObservableField(true)
     var profile = ObservableField<ProfileOtp>()
-    var selectedCard = NonNullObservableField(CHOOSE_CARD)
+    val mainBottomSheetSelectedItm = SingleLiveData<Int>()
+    val newsList = MutableLiveData<List<NotificationElement>>()
+    val news = mutableListOf<NotificationElement>()
+
+    //withdraw callback
+    val showBottomSheet = SingleLiveData<Boolean>()
+    val showUpdateError = MutableLiveData<String>()
     val success = SingleLiveData<Boolean>()
     val cards = SingleLiveData<List<CardOtp>>()
+
+    //withdraw ui
+    var selectedCard = NonNullObservableField(CHOOSE_CARD)
     val amount = NonNullObservableField("")
     val commission = NonNullObservableField("")
+    val cardId = NonNullObservableField(-1)
     val withdrawText = NonNullObservableField(CALCULATE_COMMISSION)
     val checkCommission = NonNullObservableField(true)
-    val viewState = NonNullObservableField(true)
 
 
     fun onClick() {
         if (checkCommission.get()) {
             getCommission()
         } else {
-            withdraw()
+            showBottomSheet.value = true
         }
     }
 
@@ -40,8 +53,6 @@ class MainViewModel(private val repository: MainRepository) : BaseViewModel() {
             !amount.get().isInt() -> amount.set("")
             amount.get().toInt() < 200 -> error.value =
                 R.string.error_minimum_amount
-            profile.get()!!.walletBalance - amount.get().toInt() < 100 -> error.value =
-                R.string.error_minimum_amount_left
             amount.get().toInt() > profile.get()!!.walletBalance -> error.value =
                 R.string.error_not_enough_money
             else -> {
@@ -70,18 +81,20 @@ class MainViewModel(private val repository: MainRepository) : BaseViewModel() {
 
     }
 
-    private fun withdraw() {
+    fun withdraw() {
         when {
             cardId.get() == -1 -> error.value = R.string.choose_card_first
             else -> {
                 viewModelScope.launch {
                     isLoading.value = true
                     val response = repository.withDraw(amount.get(), cardId.get())
+                    amount.set("0")
                     isLoading.value = false
                     when (response) {
                         is SimpleResult.Success -> {
                             response.data.let {
                                 errorString.value = it.pending
+
                                 onAmountChanged()
                             }
                         }
@@ -146,12 +159,31 @@ class MainViewModel(private val repository: MainRepository) : BaseViewModel() {
     }
 
     init {
-        fetchProfile()
+        getNews()
     }
 
-    fun getNews() {
+    private fun getNews() {
         viewModelScope.launch {
-            val response = repository.getNews()
+            success.value = false
+            when (val response = repository.getNews()) {
+                is SimpleResult.Success -> {
+                    response.data.let {
+                        news.clear()
+                        news.addAll(it)
+                        newsList.value = it
+                    }
+                    fetchProfile()
+
+                }
+                is SimpleResult.Error -> {
+                    success.value = true
+                    errorString.value = response.errorMessage
+                }
+                is SimpleResult.NetworkError -> {
+                    success.value = true
+                    showNetworkError.value = true
+                }
+            }
         }
     }
 
@@ -163,12 +195,16 @@ class MainViewModel(private val repository: MainRepository) : BaseViewModel() {
                 walletBalance = 0
             })
             success.value = false
-            val response = repository.fetchProfile("android", "2.2.2")
+            val response = repository.fetchProfile("android", BuildConfig.VERSION_NAME)
             success.value = true
             when (response) {
                 is SimpleResult.Success -> {
                     response.data.let {
-                        profile.set(it)
+                        if (it.forceUpdate) {
+                            showUpdateError.value = it.url!!
+                        } else {
+                            profile.set(it)
+                        }
                     }
                 }
                 is SimpleResult.Error -> {

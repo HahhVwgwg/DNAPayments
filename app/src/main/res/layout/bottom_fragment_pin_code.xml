@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dnapayments.presentation.pin_code.PinViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bottom_sheet_background">
+
+        <FrameLayout
+            android:id="@+id/frame1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/frame2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".40"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/bottomSheetIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="3dp"
+                android:contentDescription="@null"
+                android:src="@drawable/bottom_sheet" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/base_logo_transparent_background"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frame2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/frame3"
+            app:layout_constraintEnd_toEndOf="@+id/frame1"
+            app:layout_constraintHeight_percent=".15"
+            app:layout_constraintStart_toStartOf="@+id/frame1"
+            app:layout_constraintTop_toBottomOf="@+id/frame1">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_500"
+                android:gravity="center"
+                android:text="@{viewModel.pinTitle, default=@string/enter_pin_code}"
+                android:textColor="@color/contentTextColor"
+                android:textSize="@dimen/_18ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/dot1"
+                style="@style/PinDots"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@{viewModel.dots[0]? @drawable/pin_dot_on : @drawable/pin_dot_off, default=@drawable/pin_dot_off}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/dot2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+            <View
+                android:id="@+id/dot2"
+                style="@style/PinDots"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@{viewModel.dots[1]? @drawable/pin_dot_on : @drawable/pin_dot_off, default=@drawable/pin_dot_off}"
+                app:layout_constraintEnd_toStartOf="@id/dot3"
+                app:layout_constraintStart_toEndOf="@id/dot1"
+                app:layout_constraintTop_toTopOf="@+id/dot1" />
+
+            <View
+                android:id="@+id/dot3"
+                style="@style/PinDots"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@{viewModel.dots[2]? @drawable/pin_dot_on : @drawable/pin_dot_off, default=@drawable/pin_dot_off}"
+                app:layout_constraintEnd_toStartOf="@id/dot4"
+                app:layout_constraintStart_toEndOf="@id/dot2"
+                app:layout_constraintTop_toTopOf="@+id/dot1" />
+
+            <View
+                android:id="@+id/dot4"
+                style="@style/PinDots"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@{viewModel.dots[3]? @drawable/pin_dot_on : @drawable/pin_dot_off, default=@drawable/pin_dot_off}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/dot3"
+                app:layout_constraintTop_toTopOf="@+id/dot1" />
+
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/uber_move_bold"
+                android:gravity="center"
+                android:text="@string/forgot_pin_code"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_12ssp"
+                android:visibility="@{viewModel.forgot ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dot4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frame3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/frame1"
+            app:layout_constraintHeight_percent=".45"
+            app:layout_constraintStart_toStartOf="@+id/frame1"
+            app:layout_constraintTop_toBottomOf="@+id/frame2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stroke1"
+                style="@style/PinCodeStroke"
+                android:layout_marginHorizontal="@dimen/_50sdp"
+                app:layout_constraintBottom_toTopOf="@+id/stroke2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/btn1"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(1)}"
+                    android:text="@string/pin_one"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/btn2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+                <TextView
+                    android:id="@+id/btn2"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(2)}"
+                    android:text="@string/pin_two"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+                <TextView
+                    android:id="@+id/btn3"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(3)}"
+                    android:text="@string/pin_three"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btn2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stroke2"
+                style="@style/PinCodeStroke"
+                app:layout_constraintBottom_toTopOf="@+id/stroke3"
+                app:layout_constraintEnd_toEndOf="@+id/stroke1"
+                app:layout_constraintStart_toStartOf="@+id/stroke1"
+                app:layout_constraintTop_toBottomOf="@+id/stroke1">
+
+                <TextView
+                    android:id="@+id/btn4"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(4)}"
+                    android:text="@string/pin_four"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/btn5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+                <TextView
+                    android:id="@+id/btn5"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(5)}"
+                    android:text="@string/pin_five"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+                <TextView
+                    android:id="@+id/btn6"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(6)}"
+                    android:text="@string/pin_six"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btn5"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stroke3"
+                style="@style/PinCodeStroke"
+                app:layout_constraintBottom_toTopOf="@+id/stroke4"
+                app:layout_constraintEnd_toEndOf="@+id/stroke1"
+                app:layout_constraintStart_toStartOf="@+id/stroke1"
+                app:layout_constraintTop_toBottomOf="@+id/stroke2">
+
+                <TextView
+                    android:id="@+id/btn7"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(7)}"
+                    android:text="@string/pin_seven"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/btn8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+                <TextView
+                    android:id="@+id/btn8"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(8)}"
+                    android:text="@string/pin_eight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+                <TextView
+                    android:id="@+id/btn9"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(9)}"
+                    android:text="@string/pin_nine"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btn8"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stroke4"
+                style="@style/PinCodeStroke"
+                app:layout_constraintEnd_toEndOf="@+id/stroke1"
+                app:layout_constraintStart_toStartOf="@+id/stroke1"
+                app:layout_constraintTop_toBottomOf="@+id/stroke3">
+
+                <ImageView
+                    android:id="@+id/btnBiometricData"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(20)}"
+                    android:scaleType="center"
+                    android:src="@{viewModel.isFaceId? @drawable/ic_biometric_data : @drawable/ic_touch_id_black, default=@drawable/ic_touch_id_black}"
+                    android:visibility="@{viewModel.isBiometric ? View.VISIBLE : View.INVISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/btn0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/btn0"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(0)}"
+                    android:text="@string/pin_zero"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp" />
+
+                <ImageView
+                    android:id="@+id/btnBackspace"
+                    style="@style/PinCodeTextView"
+                    android:enabled="@{viewModel.widgetEnable}"
+                    android:onClick="@{() -> viewModel.onClickItem(11)}"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_backspace"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btn0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="@dimen/_50sdp"
+                    tools:ignore="ContentDescription" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/bg_main</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
@@ -17,6 +18,29 @@
     <style name="viewParent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="PinCodeTextView">
+        <item name="android:layout_margin">@dimen/_1sdp</item>
+        <item name="android:textSize">@dimen/_34ssp</item>
+        <item name="android:textColor">@color/contentTextColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/sf_pro_display_medium</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@drawable/pin_ripple</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="PinCodeStroke">
+        <item name="layout_constraintHeight_percent">.22</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="PinDots">
+        <item name="android:layout_width">15dp</item>
+        <item name="android:layout_height">15dp</item>
     </style>
 
     <style name="viewParent.headerText">

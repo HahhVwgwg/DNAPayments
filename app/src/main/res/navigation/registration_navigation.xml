@@ -17,14 +17,14 @@
         android:name="com.dnapayments.presentation.registration.MobizonFragment"
         android:label="MobizonFragment"
         tools:layout="@layout/fragment_mobizon">
-        <!--        <action-->
-        <!--            android:id="@+id/action_mobizonFragment_chooseParkFragment"-->
-        <!--            app:destination="@id/chooseParkFragment" />-->
+        <action
+            android:id="@+id/action_mobizonFragment_chooseParkFragment"
+            app:destination="@id/chooseParkFragment" />
     </fragment>
-    <!--    <fragment-->
-    <!--        android:id="@+id/chooseParkFragment"-->
-    <!--        android:name="com.dataplus.tabyspartner.ui.ui.authorization.ChooseParkFragment"-->
-    <!--        android:label="ChooseParkFragment"-->
-    <!--        tools:layout="@layout/fragment_choose_park" />-->
+    <fragment
+        android:id="@+id/chooseParkFragment"
+        android:name="com.dnapayments.presentation.registration.ChooseParkFragment"
+        android:label="ChooseParkFragment"
+        tools:layout="@layout/fragment_choose_park" />
 
 </navigation>

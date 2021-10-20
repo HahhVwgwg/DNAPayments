@@ -1,6 +1,7 @@
 package com.dnapayments.presentation.add_card
 
 import android.os.Bundle
+import android.view.WindowManager
 import com.dnapayments.R
 import com.dnapayments.databinding.FragmentAddCardBinding
 import com.dnapayments.utils.FourDigitCardFormatWatcher
@@ -13,6 +14,7 @@ class AddCardFragment :
     override fun initViews(savedInstanceState: Bundle?) {
         binding?.apply {
             viewModel = vm
+            activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
             cardNumber.addTextChangedListener(FourDigitCardFormatWatcher())
             cardNumberRepeat.addTextChangedListener(FourDigitCardFormatWatcher())
             vm.success.observe(viewLifecycleOwner, {

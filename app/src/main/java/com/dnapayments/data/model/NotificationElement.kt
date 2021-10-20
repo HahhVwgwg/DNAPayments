@@ -1,8 +1,11 @@
 package com.dnapayments.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-class NotificationElement(
+@Parcelize
+data class NotificationElement(
     val id: Long,
 
     @SerializedName("notify_type")
@@ -22,8 +25,4 @@ class NotificationElement(
 
     @SerializedName("error")
     val error: String,
-) {
-    override fun toString(): String {
-        return "NotificationElement(id=$id, notifyType='$notifyType', image='$image', title='$title', description='$description', expiryDate='$expiryDate', status='$status', viewedUsersJSON='$viewedUsersJSON', error='$error')"
-    }
-}
+) : Parcelable

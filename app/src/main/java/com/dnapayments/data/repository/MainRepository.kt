@@ -138,4 +138,16 @@ class MainRepository(private val service: IMainService) {
             e.simpleErrorSecond()
         }
     }
+
+    suspend fun getKnowBase(): SimpleResult<List<NotificationElement>> {
+        return try {
+            withContext(Dispatchers.IO) {
+                val data = service.getKnowBaseAsync(
+                ).await()
+                SimpleResult.Success(data)
+            }
+        } catch (e: Exception) {
+            e.simpleErrorSecond()
+        }
+    }
 }

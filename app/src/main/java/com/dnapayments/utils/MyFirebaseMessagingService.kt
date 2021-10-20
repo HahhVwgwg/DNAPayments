@@ -1,60 +1,31 @@
 package com.dnapayments.utils
 
 import android.annotation.SuppressLint
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.media.RingtoneManager
 import android.os.Build
 import android.provider.Settings
 import android.util.Log
-import android.widget.RemoteViews
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.dnapayments.R
-import com.dnapayments.presentation.activity.MainActivity
+import com.dnapayments.presentation.activity.SplashScreenActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import org.koin.android.ext.android.inject
+import java.util.*
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     private val prefsAuth: PrefsAuth by inject()
 
-    /**
-     * Called when message is received.
-     *
-     * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
-     */
-    // [START receive_message]
-    override fun onMessageReceived(remoteMessage: RemoteMessage) {
-
-        Log.d(TAG, "From: ${remoteMessage.from}")
-
-        // Check if message contains a data payload.
-        if (remoteMessage.data.isNotEmpty()) {
-            Log.d(TAG, "Message data payload: ${remoteMessage.data}")
-
-            if (/* Check if data needs to be processed by long running job */ true) {
-                // For long-running tasks (10 seconds or more) use WorkManager.
-                scheduleJob()
-            } else {
-                // Handle message within 10 seconds
-                handleNow()
-            }
-        }
-
-        // Check if message contains a notification payload.
-        remoteMessage.notification?.let {
-            Log.d(TAG, "Message Notification Body: ${it.body}")
-            showNotification(it.title, it.body)
-        }
-
-
-        // Also if you intend on generating your own notifications as a result of a received FCM
-        // message, here is where that should be initiated. See sendNotification method below.
-    }
-    // [END receive_message]
 
     // [START on_new_token]
     /**
@@ -77,101 +48,146 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
     // [END on_new_token]
 
-    /**
-     * Schedule async work using WorkManager.
-     */
-    private fun scheduleJob() {
-        // [START dispatch_job]
-        // [END dispatch_job]
-    }
-
-    /**
-     * Handle time allotted to BroadcastReceivers.
-     */
-    private fun handleNow() {
-        Log.d(TAG, "Short lived task is done.")
-    }
-
     private fun sendRegistrationToServer(token: String?) {
         Log.d(TAG, "sendRegistrationTokenToServer($token)")
     }
 
-    // Method to get the custom Design for the display of
-    // notification.
-    private fun getCustomDesign(
-        title: String?,
-        message: String?,
-    ): RemoteViews {
-        val remoteViews = RemoteViews(
-            applicationContext.packageName, R.layout.notification)
-        remoteViews.setTextViewText(R.id.title, title)
-        remoteViews.setTextViewText(R.id.message, message)
-        remoteViews.setImageViewResource(R.id.icon,
-            R.drawable.ic_profile)
-        return remoteViews
+
+    companion object {
+        private const val TAG = "MyFirebaseMsgService"
+        private const val CHANNEL_KMF_NOTIFICATION = "CHANNEL_KMF_NOTIFICATION"
+        private const val KMF_NOTIFICATION = "KMF notification"
+    }
+
+    private var title = ""
+    private var body = ""
+
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        super.onMessageReceived(remoteMessage)
+
+
+        val intent = Intent(this, SplashScreenActivity::class.java)
+        body = remoteMessage.data["message"].toString()
+        ////////////       START       ////////////
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationID = Random().nextInt(3000)
+        /*
+        Apps targeting SDK 26 or above (Android O) must implement notification channels and add its notifications
+        to at least one of them.
+        */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            setupChannels(notificationManager)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        val largeIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_foreground)
+        val notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_KMF_NOTIFICATION)
+            .setSmallIcon(R.drawable.ic_tenge_sign)
+            .setLargeIcon(largeIcon)
+            .setContentTitle("У вас новое уведомление")
+            .setContentText(body)
+            .setAutoCancel(true)
+            .setSound(notificationSoundUri)
+            .setContentIntent(pendingIntent)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+
+        notificationManager.notify(notificationID, notificationBuilder.build())
+        // Also if you intend on generating your own notifications as a result of a received FCM
+        // message, here is where that should be initiated. See sendNotification method below.
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private fun setupChannels(notificationManager: NotificationManager?) {
+        val adminChannelName = KMF_NOTIFICATION
+        val adminChannelDescription = KMF_NOTIFICATION
+        val adminChannel: NotificationChannel?
+        adminChannel = NotificationChannel(CHANNEL_KMF_NOTIFICATION,
+            adminChannelName,
+            NotificationManager.IMPORTANCE_HIGH)
+        adminChannel.description = adminChannelDescription
+        adminChannel.enableLights(true)
+        adminChannel.lightColor = Color.RED
+        adminChannel.enableVibration(true)
+        notificationManager?.createNotificationChannel(adminChannel)
     }
 
     /**
-     * Create and show a simple notification containing the received FCM message.
-     *
-     * @param messageBody FCM message body received.
+     * Called if InstanceID token is updated. This may occur if the security of
+     * the previous token had been compromised. Note that this is called when the InstanceID token
+     * is initially generated so this is where you would retrieve the token.
      */
-    // Method to display the notifications
-    @SuppressLint("UnspecifiedImmutableFlag")
-    private fun showNotification(
-        title: String?,
-        message: String?,
-    ) {
-        // Pass the intent to switch to the MainActivity
-        val intent = Intent(this, MainActivity::class.java)
-        // Assign channel ID
-        val channel_id = "notification_channel"
-        // Here FLAG_ACTIVITY_CLEAR_TOP flag is set to clear
-        // the activities present in the activity stack,
-        // on the top of the Activity that is to be launched
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        // Pass the intent to PendingIntent to start the
-        // next Activity
-        val pendingIntent = PendingIntent.getActivity(
-            this, 0, intent,
-            PendingIntent.FLAG_ONE_SHOT)
 
-        // Create a Builder object using NotificationCompat
-        // class. This will allow control over all the flags
-        var builder: NotificationCompat.Builder = NotificationCompat.Builder(applicationContext,
-            channel_id)
-            .setSmallIcon(R.drawable.ic_alert)
-            .setAutoCancel(true)
-            .setVibrate(longArrayOf(1000, 1000, 1000,
-                1000, 1000))
-            .setOnlyAlertOnce(true)
-            .setContentIntent(pendingIntent)
-
-        // A customized design for the notification can be
-        // set only for Android versions 4.1 and above. Thus
-        // condition for the same is checked here.
-        builder = builder.setContent(
-            getCustomDesign(title, message))
-        // Create an object of NotificationManager class to
-        // notify the
-        // user of events that happen in the background.
-        val notificationManager = getSystemService(
-            Context.NOTIFICATION_SERVICE) as NotificationManager
-        // Check if the Android Version is greater than Oreo
-        if (Build.VERSION.SDK_INT
-            >= Build.VERSION_CODES.O
-        ) {
-            val notificationChannel = NotificationChannel(
-                channel_id, "web_app",
-                NotificationManager.IMPORTANCE_HIGH)
-            notificationManager.createNotificationChannel(
-                notificationChannel)
+    private fun showNotification3(title: String, message: String) {
+        val notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val intent = Intent(this, SplashScreenActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this,
+            0 /* request code */,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+        val notificationManager =
+            applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        var builder: NotificationCompat.Builder?
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val notificationChannel =
+                NotificationChannel(CHANNEL_KMF_NOTIFICATION, KMF_NOTIFICATION, importance)
+            notificationManager.createNotificationChannel(notificationChannel)
+            builder = NotificationCompat.Builder(applicationContext, notificationChannel.getId())
+        } else {
+            builder = NotificationCompat.Builder(applicationContext)
         }
-        notificationManager.notify(0, builder.build())
+        builder = builder
+            .setSmallIcon(R.mipmap.ic_launcher_foreground)
+            .setContentTitle((title))
+            .setTicker(title)
+            .setContentText(message)
+            .setSound(notificationSoundUri)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+        notificationManager.notify(1, builder.build());
     }
 
-    companion object {
+    private fun showNotification2(title: String, message: String) {
+        val notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        createNotificationChannel();
+        val intent = Intent(this, SplashScreenActivity::class.java)
+        if (title == "link")
+            intent.putExtra("link", message)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val pendingIntent = PendingIntent.getActivity(this,
+            0 /* request code */,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+        val notification: Notification = NotificationCompat.Builder(this, CHANNEL_KMF_NOTIFICATION)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSound(notificationSoundUri)
+            .setContentIntent(pendingIntent)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .build()
+        startForeground(1, notification);
+    }
 
-        private const val TAG = "MyFirebaseMsgService"
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(CHANNEL_KMF_NOTIFICATION,
+                KMF_NOTIFICATION,
+                NotificationManager.IMPORTANCE_DEFAULT)
+            notificationChannel.setShowBadge(true)
+            // Sets whether notifications posted to this channel appear on the lockscreen or not
+            notificationChannel.lockscreenVisibility = Notification.VISIBILITY_SECRET
+            // Sets whether notifications posted to this channel should display notification lights
+            notificationChannel.enableLights(true)
+            // Sets whether notification posted to this channel should vibrate.
+            notificationChannel.enableVibration(true)
+            // Sets the notification light color for notifications posted to this channel
+            notificationChannel.lightColor = Color.GREEN
+            val manager: NotificationManager = getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(notificationChannel)
+        }
     }
 }

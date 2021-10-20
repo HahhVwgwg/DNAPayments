@@ -37,17 +37,54 @@
                 <LinearLayout
                     android:id="@+id/on_boarding_view_pager_lay"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     app:layout_constraintBottom_toTopOf="@id/container"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/newstitle">
 
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/on_boarding_view_pager"
+                    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                        android:id="@+id/imageCarousel"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="220dp"
+                        android:theme="@style/Theme.MaterialComponents.Light"
+                        app:autoPlay="true"
+                        app:autoPlayDelay="3000"
+                        app:autoWidthFixing="true"
+                        app:carouselBackground="#00000000"
+                        app:carouselGravity="CENTER"
+                        app:carouselPaddingBottom="0dp"
+                        app:carouselPaddingTop="0dp"
+                        app:carouselType="BLOCK"
+                        app:imageScaleType="fitCenter"
+                        app:infiniteCarousel="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:scaleOnScroll="false"
+                        app:scalingFactor="0.15"
+                        app:showBottomShadow="false"
+                        app:showCaption="false"
+                        app:showIndicator="false"
+                        app:showNavigationButtons="false"
+                        app:showTopShadow="false"
+                        app:touchToPause="true" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/dots"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="@id/imageCarousel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/imageCarousel"
+                        app:layout_constraintVertical_bias="0.95"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_dot" />
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/container"
@@ -114,6 +151,7 @@
                                 tools:text="@string/profile_card_view_profile_name" />
 
                             <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/more"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
@@ -124,7 +162,7 @@
                                     android:layout_marginStart="10dp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/rubik_500"
-                                    android:text="Подробнее"
+                                    android:text="@string/more"
                                     android:textColor="@color/black"
                                     android:textSize="12sp"
                                     android:textStyle="bold"
@@ -195,6 +233,7 @@
                             </LinearLayout>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/withdraw"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 

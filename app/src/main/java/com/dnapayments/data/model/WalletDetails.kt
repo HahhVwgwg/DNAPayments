@@ -51,4 +51,5 @@ data class WalletDetails(
 
     @SerializedName("created_at")
     var createdAt: String,
+    var createDate: String,
 ) : Parcelable
