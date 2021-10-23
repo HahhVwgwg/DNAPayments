@@ -17,6 +17,7 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_back.xml" value="0.15462962962962962" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_course.xml" value="0.15462962962962962" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_document_placeholder.xml" value="0.14074074074074075" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_full_screen.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.15462962962962962" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_profile.xml" value="0.14074074074074075" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/ic_setting.xml" value="0.15462962962962962" />
@@ -29,11 +30,14 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/white_background.xml" value="0.14074074074074075" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/drawable/white_background_bottom_sheet.xml" value="0.15462962962962962" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/activity_main.xml" value="0.14375" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/activity_player.xml" value="0.121875" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/activity_register.xml" value="0.14375" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/activity_registration.xml" value="0.2" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/dialog_loading.xml" value="0.14375" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/dialog_show_info.xml" value="0.14375" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/exo_playback_control_view.xml" value="0.1640625" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/exoplayer_controller.xml" value="0.1640625" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/fragment_characters.xml" value="0.2" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/fragment_course.xml" value="0.275" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/DNAPayments/app/src/main/res/layout/fragment_details.xml" value="0.2" />

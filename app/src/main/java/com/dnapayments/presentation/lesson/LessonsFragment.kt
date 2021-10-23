@@ -17,6 +17,9 @@ class LessonsFragment :
         val courseId = arguments?.getInt(Constants.COURSE_ID) ?: -1
         val courseTitle = arguments?.getString(Constants.COURSE_TITLE) ?: ""
         binding?.apply {
+            if (activity is MainActivity) {
+                (activity as MainActivity).toggleVisibility(true)
+            }
             viewModel = vm
             adapter = LessonAdapter({
                 if (activity is MainActivity) {

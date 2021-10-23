@@ -53,6 +53,7 @@ class QuizViewModel(private val repository: MainRepository, private val prefsAut
 
     private fun sendExamResults() {
         viewModelScope.launch {
+            isRefreshing.value = true
             showLoader.set(true)
             val response =
                 repository.saveQuizResult(localLessonId,

@@ -9,24 +9,31 @@
             type="com.dnapayments.presentation.details.DetailsViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"
-            app:title="@{viewModel.title}" />
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:paddingHorizontal="@dimen/marginHorizontal"
-            android:src="@drawable/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/toolbar" />
+            android:layout_alignParentTop="true">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"
+                app:title="@{viewModel.title}" />
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:paddingHorizontal="@dimen/marginHorizontal"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/toolbar" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <FrameLayout
             android:id="@+id/player_view_layout"
@@ -34,16 +41,45 @@
             android:layout_height="@dimen/_200sdp"
             android:layout_marginHorizontal="@dimen/marginHorizontal"
             android:background="@drawable/white_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar">
+            android:visibility="gone">
 
             <WebView
                 android:id="@+id/web_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
+            <VideoView
+                android:id="@+id/video_view2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/video_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/white_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.universalvideoview.UniversalVideoView
+                android:id="@+id/videoView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                app:uvv_autoRotation="true"
+                app:uvv_fitXY="false" />
+
+            <com.universalvideoview.UniversalMediaController
+                android:id="@+id/media_controller"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:uvv_scalable="true" />
 
         </FrameLayout>
 
@@ -51,9 +87,10 @@
             android:id="@+id/pass_quiz"
             style="@style/Button"
             android:layout_width="match_parent"
+            android:layout_below="@id/video_layout"
             android:layout_marginTop="@dimen/_38sdp"
             android:text="@string/pass_quiz"
-            app:layout_constraintTop_toBottomOf="@id/player_view_layout" />
+            app:layout_constraintTop_toBottomOf="@id/video_layout" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>

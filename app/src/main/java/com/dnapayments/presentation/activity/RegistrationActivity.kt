@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.dnapayments.R
 import com.dnapayments.databinding.ActivityRegistrationBinding
@@ -63,7 +62,7 @@ class RegistrationActivity :
                 )
             )
         } else {
-            Toast.makeText(this, "WhatsApp not Installed", Toast.LENGTH_SHORT).show()
+            vm.error.value = R.string.not_found_whatsapp
             val uri = Uri.parse("market://details?id=com.whatsapp")
             val goToMarket = Intent(Intent.ACTION_VIEW, uri)
             startActivity(goToMarket)

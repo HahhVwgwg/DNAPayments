@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import com.dnapayments.data.model.APIError
 import com.dnapayments.data.model.SimpleResult
 import com.google.gson.Gson
@@ -62,6 +64,9 @@ fun String?.emailIsValid(): Boolean {
         .matches()
 }
 
+fun Fragment.getNavChildFragments(navHostFragment: NavHostFragment?): List<Fragment>? {
+    return navHostFragment?.childFragmentManager?.fragments ?: return null
+}
 
 @SuppressLint("SimpleDateFormat")
 fun String.dateFormat(): String {

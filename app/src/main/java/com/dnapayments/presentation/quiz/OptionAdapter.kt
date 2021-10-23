@@ -34,4 +34,8 @@ class OptionAdapter(private val myCallBack: (result: Boolean) -> Unit) :
     fun activateOptions() {
         isActive = true
     }
+
+    fun deactivateOptions() {
+        isActive = false
+    }
 }

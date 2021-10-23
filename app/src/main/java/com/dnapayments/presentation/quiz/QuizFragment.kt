@@ -39,12 +39,15 @@ class QuizFragment :
                     optionAdapter?.activateOptions()
                 }, 500)
             }
+            vm.isRefreshing.observe(viewLifecycleOwner, {
+                optionAdapter?.deactivateOptions()
+            })
             recyclerView.adapter = optionAdapter
             recyclerViewScore.adapter = resultAdapter
 
             //observers
             vm.options.observe(viewLifecycleOwner, {
-                optionAdapter?.setData(it)
+                optionAdapter?.setData(it.shuffled())
             })
             vm.progress.observe(viewLifecycleOwner, {
                 resultAdapter?.setData(it)

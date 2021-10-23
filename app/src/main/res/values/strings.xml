@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Miras</string>
+    <string name="app_name">Mios</string>
     <string name="nav_characters">Курстар</string>
     <string name="profile">Профиль</string>
     <string name="settings">Баптаулар</string>
@@ -38,4 +38,5 @@
     <string name="go_to_main_page">Басты бетке өту</string>
     <string name="pass_test_again">Тестті қайта тапсыру</string>
     <string name="pass_previous_lesson">Алдыңғы сабақты өтіңіз</string>
+    <string name="not_found_whatsapp">Өкінішке орай сізде WhatsApp қосымшасы орнатылмаған. Тіркелу үшін WhatsApp қосымшасын орнатуынызды сұраймыз.</string>
 </resources>

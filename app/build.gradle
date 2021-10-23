@@ -9,7 +9,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.miras"
+        applicationId "kz.mios"
         minSdk 21
         targetSdk 30
         versionCode 1
@@ -106,5 +106,5 @@ dependencies {
     //refresh button
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
-    implementation 'com.google.android.exoplayer:exoplayer:2.15.1'
+    implementation 'com.linsea:universalvideoview:1.1.0@aar'
 }

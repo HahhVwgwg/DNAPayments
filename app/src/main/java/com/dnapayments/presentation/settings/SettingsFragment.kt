@@ -48,7 +48,7 @@ class SettingsFragment :
                         
                         """.trimIndent()
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
-            startActivity(Intent.createChooser(shareIntent, "choose one"))
+            startActivity(Intent.createChooser(shareIntent, "Таңдаңыз"))
         } catch (e: Exception) {
         }
     }
