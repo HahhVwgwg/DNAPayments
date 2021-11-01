@@ -63,9 +63,6 @@ class RegistrationActivity :
             )
         } else {
             vm.error.value = R.string.not_found_whatsapp
-            val uri = Uri.parse("market://details?id=com.whatsapp")
-            val goToMarket = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(goToMarket)
         }
     }
 
