@@ -7,7 +7,7 @@ import android.os.Bundle
 import com.dnapayments.R
 import com.dnapayments.databinding.FragmentSettingsBinding
 import com.dnapayments.presentation.activity.MainViewModel
-import com.dnapayments.presentation.activity.RegistrationActivity
+import com.dnapayments.presentation.activity.LoginActivity
 import com.dnapayments.utils.PrefsAuth
 import com.dnapayments.utils.base.BaseBindingFragment
 import org.koin.android.ext.android.inject
@@ -22,7 +22,7 @@ class SettingsFragment :
         binding?.run {
             logout.setOnClickListener {
                 prefsAuth.logout()
-                startActivity(Intent(requireActivity(), RegistrationActivity::class.java))
+                startActivity(Intent(requireActivity(), LoginActivity::class.java))
                 requireActivity().finishAffinity()
             }
             rateUs.name.setOnClickListener {

@@ -6,5 +6,6 @@
     <dimen name="marginHorizontal">@dimen/_16sdp</dimen>
     <dimen name="marginTop">@dimen/_15sdp</dimen>
     <integer name="slide_duration">200</integer>
+    <integer name="activity_transition_time">2000</integer>
 
 </resources>

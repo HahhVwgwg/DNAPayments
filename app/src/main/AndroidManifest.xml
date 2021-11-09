@@ -31,6 +31,9 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".presentation.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".presentation.activity.RegistrationActivity"
             android:screenOrientation="portrait" />
     </application>

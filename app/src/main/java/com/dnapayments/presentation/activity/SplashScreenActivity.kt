@@ -22,9 +22,11 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         findViewById<View>(R.id.splash_screen).alpha = 0f
-        findViewById<View>(R.id.splash_screen).animate().setDuration(1200).alpha(1f).withEndAction {
-            val intent = Intent(this,
-                if (prefsAuth.isAuthorized()) MainActivity::class.java else RegistrationActivity::class.java)
+        findViewById<View>(R.id.splash_screen).animate().setDuration(2000).alpha(1f).withEndAction {
+            val intent = Intent(
+                this,
+                if (prefsAuth.isAuthorized()) MainActivity::class.java else LoginActivity::class.java
+            )
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()

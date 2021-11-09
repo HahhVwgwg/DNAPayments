@@ -14,7 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.dnapayments.R
 import com.dnapayments.presentation.activity.MainActivity
-import com.dnapayments.presentation.activity.RegistrationActivity
+import com.dnapayments.presentation.activity.LoginActivity
 import com.dnapayments.utils.PrefsAuth
 
 abstract class BaseBindingFragment<B : ViewDataBinding, T : BaseViewModel>(@LayoutRes private val layoutResID: Int) :
@@ -70,7 +70,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding, T : BaseViewModel>(@Layo
     private fun logout() {
         val prefsAuth = PrefsAuth(requireContext())
         prefsAuth.logout()
-        startActivity(Intent(requireActivity(), RegistrationActivity::class.java))
+        startActivity(Intent(requireActivity(), LoginActivity::class.java))
         requireActivity().finishAffinity()
     }
 

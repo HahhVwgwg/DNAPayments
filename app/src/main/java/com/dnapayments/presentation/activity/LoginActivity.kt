@@ -7,12 +7,12 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import com.dnapayments.R
-import com.dnapayments.databinding.ActivityRegistrationBinding
+import com.dnapayments.databinding.ActivityLoginBinding
 import com.dnapayments.utils.base.BaseBindingActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RegistrationActivity :
-    BaseBindingActivity<ActivityRegistrationBinding>(R.layout.activity_registration) {
+class LoginActivity :
+    BaseBindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
     private val vm: LoginViewModel by viewModel()
     override fun initViews(savedInstanceState: Bundle?) {
@@ -20,26 +20,31 @@ class RegistrationActivity :
         window.statusBarColor = ContextCompat.getColor(this, R.color.region_secondary)
         binding?.apply {
             viewModel = vm
-            vm.success.observe(this@RegistrationActivity, {
+            join.setOnClickListener {
+                startActivity(Intent(this@LoginActivity, RegistrationActivity::class.java))
+                overridePendingTransition(R.anim.slide_up, R.anim.no_transition)
+                finishAffinity()
+            }
+            vm.success.observe(this@LoginActivity, {
                 if (it) {
-                    startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
-                    finish()
-                    overridePendingTransition(R.anim.no_transition, R.anim.slide_down);
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    finishAffinity()
                 }
-            }); vm.error.observe(this@RegistrationActivity, {
+            })
+            vm.error.observe(this@LoginActivity, {
                 showAlert(getStr(it))
             })
-            vm.errorString.observe(this@RegistrationActivity, {
+            vm.errorString.observe(this@LoginActivity, {
                 showAlert(it)
             })
-            vm.isLoading.observe(this@RegistrationActivity, {
+            vm.isLoading.observe(this@LoginActivity, {
                 if (it) {
                     showLoader()
                 } else {
                     hideLoader()
                 }
             })
-            vm.showNetworkError.observe(this@RegistrationActivity, {
+            vm.showNetworkError.observe(this@LoginActivity, {
                 showAlert(getStr(R.string.check_internet_connection))
             })
         }

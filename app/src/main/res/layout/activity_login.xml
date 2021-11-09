@@ -39,7 +39,7 @@
                 android:layout_marginTop="@dimen/_38sdp"
                 android:fontFamily="@font/rubik_500"
                 android:gravity="center_horizontal"
-                android:text="@string/join"
+                android:text="@string/welcome"
                 android:textColor="@color/main_black"
                 android:textSize="@dimen/_18ssp"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -108,39 +108,29 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/repeat_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_24sdp"
-                app:layout_constraintTop_toBottomOf="@id/enter_password">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/rubik_500"
-                    android:hint="@string/repeat_the_password"
-                    android:importantForAutofill="no"
-                    android:inputType="textPassword"
-                    android:paddingVertical="@dimen/_15sdp"
-                    android:text="@={viewModel.passwordRepeat}"
-                    android:textColor="@color/main_black"
-                    android:textColorHint="@color/region_secondary"
-                    android:textSize="@dimen/_11ssp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
             <Button
                 android:id="@+id/register"
                 style="@style/Button"
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/_38sdp"
-                android:onClick="@{() -> viewModel.register()}"
+                android:onClick="@{() -> viewModel.login()}"
+                android:text="@string/register"
+                app:layout_constraintTop_toBottomOf="@id/enter_password" />
+
+            <TextView
+                android:id="@+id/join"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_24sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:fontFamily="@font/rubik_500"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
                 android:text="@string/join"
+                android:textColor="@color/bg_color"
+                android:textSize="@dimen/_11ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/repeat_password" />
+                app:layout_constraintTop_toBottomOf="@id/register" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
