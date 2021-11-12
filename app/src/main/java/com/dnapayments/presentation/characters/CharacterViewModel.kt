@@ -14,12 +14,14 @@ class CharacterViewModel(private val repository: CharacterRepository) : BaseView
     var listSize = ObservableField(0)
 
     init {
-//        fetchCharacter()
+        fetchCharacter()
     }
 
-    private fun fetchCharacter() {
+    fun fetchCharacter() {
         viewModelScope.launch {
+            isRefreshing.value = true
             val response = repository.fetchCharacters()
+            isRefreshing.value = false
             when (response.status) {
                 Resource.Status.SUCCESS -> {
                     response.data?.let {
@@ -31,7 +33,6 @@ class CharacterViewModel(private val repository: CharacterRepository) : BaseView
                     response.errorMessage.let {
                         errorString.value = it
                     }
-
                 }
                 else -> {
                 }

@@ -13,13 +13,18 @@ class CharactersFragment :
     override val vm: CharacterViewModel by sharedViewModel()
     override fun initViews(savedInstanceState: Bundle?) {
         binding?.apply {
-//            showLoader()
             viewModel = vm
             characterAdapter = CharacterAdapter {
                 findNavController().navigate(R.id.action_characters_to_details,
                     Bundle().apply {
                         putInt("char_id", it)
                     })
+            }
+            vm.isRefreshing.observe(viewLifecycleOwner, {
+                refresh.isRefreshing = it
+            })
+            refresh.setOnRefreshListener {
+                vm.fetchCharacter()
             }
             recyclerView.adapter = characterAdapter
             vm.characterList.observe(viewLifecycleOwner, {
