@@ -54,7 +54,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding, T : BaseViewModel>(@Layo
             showAlert(getStr(it))
         }
         vm.errorString.observe(viewLifecycleOwner) {
-            if (it == "Сіздің қосымшаға кіру уақытыңыз бітті. Қайта кіруіңізді сұраймыз.") {
+            if (it == getStr(R.string.end_session)) {
                 showAlert(it) {
                     logout()
                 }
@@ -81,6 +81,10 @@ abstract class BaseBindingFragment<B : ViewDataBinding, T : BaseViewModel>(@Layo
         Dialog(requireContext()).apply {
             this.setContentView(R.layout.layout_alert)
             this.setCancelable(false)
+            this.window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
             this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             this.setCanceledOnTouchOutside(false)
             this.findViewById<Button>(R.id.btnClose).setOnClickListener {
@@ -98,12 +102,42 @@ abstract class BaseBindingFragment<B : ViewDataBinding, T : BaseViewModel>(@Layo
         Dialog(requireContext()).apply {
             this.setContentView(R.layout.layout_alert)
             this.setCancelable(false)
+            this.window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
             this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             this.setCanceledOnTouchOutside(false)
             this.findViewById<Button>(R.id.btnClose).setOnClickListener {
                 isShowMsg = false
                 myCallBack.invoke()
                 dismiss()
+            }
+            this.findViewById<android.widget.TextView>(R.id.dialogContent).text = msg
+            this.show()
+            isShowMsg = true
+        }
+    }
+
+    fun showAlertLogout(msg: String, myCallBack: () -> Unit) {
+        if (isShowMsg) return
+        Dialog(requireContext()).apply {
+            this.setContentView(R.layout.layout_alert_two_option)
+            this.setCancelable(false)
+            this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            this.window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            this.setCanceledOnTouchOutside(false)
+            this.findViewById<Button>(R.id.btnClose).setOnClickListener {
+                isShowMsg = false
+                dismiss()
+            }
+            this.findViewById<Button>(R.id.btn_logout).setOnClickListener {
+                isShowMsg = false
+                dismiss()
+                myCallBack.invoke()
             }
             this.findViewById<android.widget.TextView>(R.id.dialogContent).text = msg
             this.show()

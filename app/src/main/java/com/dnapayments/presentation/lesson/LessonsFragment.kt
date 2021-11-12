@@ -1,5 +1,6 @@
 package com.dnapayments.presentation.lesson
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
 import com.dnapayments.R
@@ -14,12 +15,10 @@ class LessonsFragment :
     override val vm: LessonViewModel by viewModel()
     private var adapter: LessonAdapter? = null
     override fun initViews(savedInstanceState: Bundle?) {
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         val courseId = arguments?.getInt(Constants.COURSE_ID) ?: -1
         val courseTitle = arguments?.getString(Constants.COURSE_TITLE) ?: ""
         binding?.apply {
-            if (activity is MainActivity) {
-                (activity as MainActivity).toggleVisibility(true)
-            }
             viewModel = vm
             adapter = LessonAdapter({
                 if (activity is MainActivity) {

@@ -27,7 +27,10 @@
     <string name="error_password_length">Құпиясөзді толтырыңыз. Құпиясөздің ұзындығы кем дегенде 4 болу керек</string>
     <string name="get_courses">Сабақтарға қатысып, барлық тестілерден өтіп, келесі сабақтарға қол жеткізіңіз</string>
     <string name="logout">Шығу</string>
+    <string name="back">Артқа</string>
     <string name="end">Аяқтау</string>
+    <string name="end_session">Сіздің қосымшаға кіру уақытыңыз бітті. Қайта кіруіңізді сұраймыз.</string>
+    <string name="logout_hint">Сіз косымшадан шыққыңыз келе ме?</string>
     <string name="pass_quiz">Тест тапсыру</string>
     <string name="result_place_holder">%1$d/%2$d</string>
     <string name="result_total">Дұрыс жауаптары: %1$d / %2$d</string>

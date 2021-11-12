@@ -21,15 +21,17 @@ class SettingsFragment :
     override fun initViews(savedInstanceState: Bundle?) {
         binding?.run {
             logout.setOnClickListener {
-                prefsAuth.logout()
-                startActivity(Intent(requireActivity(), RegistrationActivity::class.java))
-                requireActivity().finishAffinity()
+                showAlertLogout(getStr(R.string.logout_hint)) {
+                    prefsAuth.logout()
+                    startActivity(Intent(requireActivity(), RegistrationActivity::class.java))
+                    requireActivity().finishAffinity()
+                }
             }
-            rateUs.name.setOnClickListener {
+            rateUs.name2.setOnClickListener {
                 launchMarket()
             }
 
-            shareApp.name.setOnClickListener {
+            shareApp.name2.setOnClickListener {
                 shareApp()
             }
         }
@@ -59,8 +61,12 @@ class SettingsFragment :
         try {
             startActivity(myAppLinkToMarket)
         } catch (e: ActivityNotFoundException) {
-            startActivity(Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://play.google.com/store/apps/details?id=" + requireActivity().packageName)))
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + requireActivity().packageName)
+                )
+            )
         }
     }
 }

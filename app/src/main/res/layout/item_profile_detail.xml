@@ -28,19 +28,19 @@
         android:layout_marginTop="@dimen/_15sdp">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/title2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sf_pro_display_medium"
             android:text="@{title}"
             android:textColor="@color/grey_profile_detail"
             android:textSize="@dimen/_11ssp"
-            app:layout_constraintEnd_toEndOf="@id/data"
-            app:layout_constraintStart_toStartOf="@id/data"
+            app:layout_constraintEnd_toEndOf="@id/data2"
+            app:layout_constraintStart_toStartOf="@id/data2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/data"
+            android:id="@+id/data2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_8sdp"
@@ -51,7 +51,7 @@
             android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/icon"
-            app:layout_constraintTop_toBottomOf="@id/title" />
+            app:layout_constraintTop_toBottomOf="@id/title2" />
 
         <ImageView
             android:id="@+id/icon"
@@ -59,9 +59,9 @@
             android:layout_height="@dimen/_20sdp"
             android:contentDescription="@null"
             android:src="@{drawable}"
-            app:layout_constraintBottom_toBottomOf="@id/data"
+            app:layout_constraintBottom_toBottomOf="@id/data2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/data"
+            app:layout_constraintTop_toTopOf="@id/data2"
             app:tint="@color/grey_profile_detail" />
 
         <View
@@ -70,7 +70,7 @@
             android:layout_marginTop="@dimen/_11sdp"
             android:background="@color/divider_color"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/data" />
+            app:layout_constraintTop_toBottomOf="@id/data2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -26,7 +26,6 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:fontFamily="@font/sf_pro_display_medium"
         android:gravity="center"
-        android:minWidth="@dimen/_150sdp"
         android:textColor="@color/main_black"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"

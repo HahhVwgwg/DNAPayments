@@ -12,7 +12,7 @@ android {
         applicationId "com.mios"
         minSdk 21
         targetSdk 30
-        versionCode 4
+        versionCode 5
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -109,4 +109,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     implementation 'com.linsea:universalvideoview:1.1.0@aar'
+
+    implementation 'bg.devlabs:fullscreen-video-view:1.2.0'
+
 }

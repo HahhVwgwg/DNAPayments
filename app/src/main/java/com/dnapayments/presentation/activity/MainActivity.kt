@@ -25,13 +25,10 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
             when (NavHostFragment.findNavController(supportFragmentManager.fragments[0]).currentDestination?.id) {
                 R.id.navigation_quiz,
                 R.id.navigation_result,
+                R.id.navigation_details
                 -> {
                     toggleVisibility(true)
                     super.onBackPressed()
-                }
-                R.id.navigation_details,
-                -> {
-
                 }
                 else -> {
                     super.onBackPressed()
