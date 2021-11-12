@@ -21,24 +21,24 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
     }
 
     override fun onBackPressed() {
-        binding?.navView?.let {
-            when (NavHostFragment.findNavController(supportFragmentManager.fragments[0]).currentDestination?.id) {
-                R.id.navigation_quiz,
-                R.id.navigation_result,
-                -> {
-                    toggleVisibility(true)
-                    super.onBackPressed()
-                }
-                R.id.navigation_details,
-                -> {
-
-                }
-                else -> {
-                    super.onBackPressed()
-                }
-            }
-
-        }
+//        binding?.navView?.let {
+//            when (NavHostFragment.findNavController(supportFragmentManager.fragments[0]).currentDestination?.id) {
+//                R.id.navigation_quiz,
+//                R.id.navigation_result,
+//                -> {
+//                    toggleVisibility(true)
+//                    super.onBackPressed()
+//                }
+//                R.id.navigation_details,
+//                -> {
+//
+//                }
+//                else -> {
+//                    super.onBackPressed()
+//                }
+//            }
+//
+//        }
     }
 
     fun onBack() {

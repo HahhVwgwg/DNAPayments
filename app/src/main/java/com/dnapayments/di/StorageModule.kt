@@ -1,3 +1,5 @@
+package com.dnapayments.di
+
 import com.dnapayments.utils.PrefsAuth
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module

@@ -1,4 +1,6 @@
 //import com.readystatesoftware.chuck.ChuckInterceptor
+import com.dnapayments.api_clients.ICharacterDetailsService
+import com.dnapayments.api_clients.ICharacterListService
 import com.dnapayments.api_clients.ILoginService
 import com.dnapayments.api_clients.IMainService
 import com.dnapayments.utils.Constants
@@ -24,6 +26,14 @@ val networkModule = module {
     single {
         val retrofit: Retrofit = get()
         retrofit.create(ILoginService::class.java) as ILoginService
+    }
+    single {
+        val retrofit: Retrofit = get()
+        retrofit.create(ICharacterDetailsService::class.java) as ICharacterDetailsService
+    }
+    single {
+        val retrofit: Retrofit = get()
+        retrofit.create(ICharacterListService::class.java) as ICharacterListService
     }
 }
 

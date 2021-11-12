@@ -5,8 +5,8 @@ import com.dnapayments.di.appModule
 import networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import repoModule
-import storageModule
+import com.dnapayments.di.repoModule
+import com.dnapayments.di.storageModule
 
 class App : Application() {
     override fun onCreate() {
