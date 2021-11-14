@@ -29,13 +29,16 @@ class WithdrawFragment :
                 findNavController().navigate(R.id.action_withdraw_to_history)
             }
             vm.showBottomSheet.observe(viewLifecycleOwner, {
-                PinCodeFragment(3) {
-                    if (it) {
-                        vm.withdraw()
-                    }
-                }.show(
+                PinCodeFragment.newInstance(3).show(
                     parentFragmentManager,
-                    null)
+                    null
+                )
+            })
+
+            vm.onPinCallback.observe(viewLifecycleOwner, {
+                if (it) {
+                    vm.withdraw()
+                }
             })
             vm.cards.observe(viewLifecycleOwner, { cardList ->
                 MultiChoiceBottomFragment({

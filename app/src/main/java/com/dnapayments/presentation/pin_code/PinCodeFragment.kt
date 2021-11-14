@@ -1,26 +1,21 @@
 package com.dnapayments.presentation.pin_code
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.biometric.BiometricPrompt
 import com.dnapayments.R
 import com.dnapayments.databinding.BottomFragmentPinCodeBinding
 import com.dnapayments.presentation.activity.RegistrationActivity
-import com.dnapayments.utils.BiometricAuthListener
-import com.dnapayments.utils.BiometricUtil
-import com.dnapayments.utils.Earthquake
-import com.dnapayments.utils.PrefsAuth
+import com.dnapayments.utils.*
 import com.dnapayments.utils.base.BaseBindingBottomFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.properties.Delegates
 
 //@requestCode ->  10 - Set access code, 11 - Change access code
-class PinCodeFragment(
-    private val requestCode: Int,
-    private val myCallBack: (result: Boolean) -> Unit,
-) :
+class PinCodeFragment :
     BaseBindingBottomFragment<BottomFragmentPinCodeBinding>(R.layout.bottom_fragment_pin_code),
     BiometricAuthListener {
 
@@ -28,8 +23,19 @@ class PinCodeFragment(
     private var isCancelTouch = true
     private val prefsAuth: PrefsAuth by inject()
 
+    private var onItemSelectedListener: OnItemSelectedListener? = null
+    private var requestCode by Delegates.notNull<Int>()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnItemSelectedListener) {
+            onItemSelectedListener = context
+        }
+    }
+
     override fun initViews(savedInstanceState: Bundle?) {
         activity?.let { activity ->
+            requestCode = arguments?.getInt("request") ?: 1
             isCancelable = requestCode != 1 && requestCode != 10
             binding?.let { b ->
                 //  Bind viewModel
@@ -65,19 +71,21 @@ class PinCodeFragment(
                         200 -> {
                             when (requestCode) {
                                 1, 2, 3 -> {
-                                    myCallBack.invoke(true)
+                                    if (requestCode == 3) {
+                                        onItemSelectedListener?.onBottomSheetCallback(true)
+                                    }
                                     isCancelTouch = false
                                     dismiss()
                                 }
                                 10, 11 -> {
-                                    myCallBack.invoke(true)
+//                                    onItemSelectedListener?.onBottomSheetCallback(true)
                                     isCancelTouch = false
                                     dismiss()
                                 }
                             }
                         }
                         777 -> {
-                            myCallBack.invoke(true)
+                            onItemSelectedListener?.onBottomSheetCallback(true)
                             isCancelTouch = false
                             dismiss()
                         }
@@ -94,7 +102,7 @@ class PinCodeFragment(
     }
 
     override fun onDismiss(dialog: DialogInterface) {
-        if (isCancelTouch) myCallBack.invoke(false)
+        if (isCancelTouch && requestCode == 3) onItemSelectedListener?.onBottomSheetCallback(false)
         super.onDismiss(dialog)
     }
 
@@ -111,9 +119,11 @@ class PinCodeFragment(
         }
     }
 
-    override fun onBiometricAuthenticationSuccess(result: BiometricPrompt.AuthenticationResult) {
+    override fun onBiometricAuthenticationSuccess(result: androidx.biometric.BiometricPrompt.AuthenticationResult) {
         Log.e("bio", "onBiometricAuthenticationSuccess")
-        myCallBack.invoke(true)
+        if (requestCode == 3) {
+            onItemSelectedListener?.onBottomSheetCallback(true)
+        }
         isCancelTouch = false
         dismiss()
     }
@@ -124,4 +134,15 @@ class PinCodeFragment(
             toast(it, errorMessage)
         }
     }
+
+    companion object {
+        fun newInstance(requestCode: Int): PinCodeFragment {
+            val data = Bundle()
+            data.putInt("request", requestCode)
+            return PinCodeFragment().apply {
+                arguments = data
+            }
+        }
+    }
+
 }

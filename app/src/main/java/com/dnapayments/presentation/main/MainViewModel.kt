@@ -38,6 +38,8 @@ class MainViewModel(private val repository: MainRepository) : BaseViewModel() {
     val withdrawText = NonNullObservableField(CALCULATE_COMMISSION)
     val checkCommission = NonNullObservableField(true)
 
+    val onPinCallback = SingleLiveData<Boolean>()
+
 
     fun onClick() {
         if (checkCommission.get()) {
@@ -53,6 +55,7 @@ class MainViewModel(private val repository: MainRepository) : BaseViewModel() {
             !amount.get().isInt() -> amount.set("")
             amount.get().toInt() < 200 -> error.value =
                 R.string.error_minimum_amount
+            profile.get() == null -> error.value = R.string.something_went_wrong
             amount.get().toInt() > profile.get()!!.walletBalance -> error.value =
                 R.string.error_not_enough_money
             else -> {

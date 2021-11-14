@@ -16,6 +16,7 @@ import com.dnapayments.presentation.call.CallBottomFragment
 import com.dnapayments.presentation.main.MainViewModel
 import com.dnapayments.presentation.pin_code.PinCodeFragment
 import com.dnapayments.presentation.update.UpdateBottomFragment
+import com.dnapayments.utils.OnItemSelectedListener
 import com.dnapayments.utils.PrefsAuth
 import com.dnapayments.utils.base.BaseBindingActivity
 import com.dnapayments.utils.base.BaseBindingFragment
@@ -29,7 +30,8 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_main),
+    OnItemSelectedListener {
     private val vm: MainViewModel by viewModel()
     private var mAppUpdateManager: AppUpdateManager? = null
     private var installStateUpdatedListener: InstallStateUpdatedListener? = null
@@ -40,15 +42,19 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
             viewModel = vm
             navView.setupWithNavController(findNavController(R.id.nav_host_fragment_main))
             navView.setOnItemSelectedListener { navigation ->
-                if (NavigationUI.onNavDestinationSelected(navigation,
-                        findNavController(R.id.nav_host_fragment_main))
+                if (NavigationUI.onNavDestinationSelected(
+                        navigation,
+                        findNavController(R.id.nav_host_fragment_main)
+                    )
                 ) {
                     true
                 } else {
                     when (navigation.itemId) {
                         R.id.navigation_phone -> {
-                            CallBottomFragment(vm.profile.get()?.parkMobile,
-                                vm.profile.get()?.supportMobile) {
+                            CallBottomFragment(
+                                vm.profile.get()?.parkMobile,
+                                vm.profile.get()?.supportMobile
+                            ) {
                                 if (it)
                                     startCall(vm.profile.get()?.parkMobile)
                                 else
@@ -78,11 +84,10 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
             })
 
         }
-        PinCodeFragment(if (prefsAuth.isPinCodeExist()) 1 else 10) {
-
-        }.show(
+        PinCodeFragment.newInstance(if (prefsAuth.isPinCodeExist()) 1 else 10).show(
             supportFragmentManager,
-            null)
+            null
+        )
 
 
 
@@ -99,7 +104,8 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
                         appUpdateInfo,
                         AppUpdateType.FLEXIBLE /*AppUpdateType.IMMEDIATE*/,
                         this,
-                        RC_APP_UPDATE)
+                        RC_APP_UPDATE
+                    )
                 } catch (e: IntentSender.SendIntentException) {
                     e.printStackTrace()
                 }
@@ -122,8 +128,10 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
                             mAppUpdateManager?.unregisterListener(this)
                         }
                         else -> {
-                            Log.i(BaseBindingFragment.TAG,
-                                "InstallStateUpdatedListener: state: " + state.installStatus())
+                            Log.i(
+                                BaseBindingFragment.TAG,
+                                "InstallStateUpdatedListener: state: " + state.installStatus()
+                            )
                         }
                     }
                 }
@@ -180,5 +188,9 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
         if (mAppUpdateManager != null) {
             mAppUpdateManager?.unregisterListener(installStateUpdatedListener)
         }
+    }
+
+    override fun onBottomSheetCallback(value: Boolean) {
+        vm.onPinCallback.value = value
     }
 }

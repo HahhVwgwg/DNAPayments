@@ -29,10 +29,10 @@ class ProfileFragment :
                 requireActivity().finishAffinity()
             }
             changePinCode.setOnClickListener {
-                PinCodeFragment(if (prefsAuth.isPinCodeExist()) 11 else 10) {
-                }.show(
+                PinCodeFragment.newInstance(if (prefsAuth.isPinCodeExist()) 11 else 10).show(
                     parentFragmentManager,
-                    null)
+                    null
+                )
             }
 
             news.setOnClickListener {
