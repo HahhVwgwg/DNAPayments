@@ -49,6 +49,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
 //            }
 //
 //        }
+        onBack()
     }
 
     fun onBack() {
