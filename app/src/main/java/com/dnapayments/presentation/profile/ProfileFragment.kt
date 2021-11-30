@@ -12,7 +12,10 @@ class ProfileFragment :
     override val vm: MainViewModel by viewModel()
     override fun initViews(savedInstanceState: Bundle?) {
         binding?.apply {
-
+            viewModel = vm
+            vm.login.set("Youtube")
+            vm.nameSurname.set("Maksat Bazarbayev")
+            vm.registrationDate.set("29.11.2021")
         }
     }
 }

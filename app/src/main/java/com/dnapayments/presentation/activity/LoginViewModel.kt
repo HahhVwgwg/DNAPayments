@@ -11,12 +11,14 @@ class LoginViewModel :
     BaseViewModel() {
     val success = SingleLiveData<Boolean>()
     val email = NonNullObservableField("")
+    val nameAndSurname = NonNullObservableField("")
     val password = NonNullObservableField("")
     val passwordRepeat = NonNullObservableField("")
 
     fun login() {
         when {
             email.get().length < 4 -> error.value = R.string.error_email_length
+            nameAndSurname.get().length < 4 -> error.value = R.string.error_credential_length
             password.get().length < 4 -> error.value = R.string.error_password_length
             else -> {
                 viewModelScope.launch {
@@ -31,6 +33,7 @@ class LoginViewModel :
         when {
             email.get().length < 4 -> error.value = R.string.error_email_length
             password.get().length < 4 -> error.value = R.string.error_password_length
+            nameAndSurname.get().length < 4 -> error.value = R.string.error_credential_length
             passwordRepeat.get().length < 4 -> error.value = R.string.error_password_length
             passwordRepeat.get() != password.get() -> error.value = R.string.password_not_same
             else -> {

@@ -84,11 +84,36 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/enter_password"
+                android:id="@+id/enter_surname_and_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_24sdp"
                 app:layout_constraintTop_toBottomOf="@id/enter_login">
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/rubik_500"
+                    android:hint="@string/enter_name_and_surname"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:paddingVertical="@dimen/_15sdp"
+                    android:text="@={viewModel.nameAndSurname}"
+                    android:textColor="@color/main_black"
+                    android:textColorHint="@color/region_secondary"
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/enter_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_24sdp"
+                app:layout_constraintTop_toBottomOf="@id/enter_surname_and_name">
 
                 <EditText
                     android:id="@+id/password"

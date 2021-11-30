@@ -30,6 +30,9 @@ class PrefsAuth(context: Context) : BasePrefs(context, PREFS_AUTH) {
 
     fun isFirst(): Boolean = prefs?.getBoolean(IS_FIRST, true) ?: true
 
+    fun setFirst(isAuthorized: Boolean) =
+        prefs?.edit()?.putBoolean(IS_FIRST, isAuthorized)?.apply()
+
 
     fun isPinCodeExist(): Boolean = prefs?.getBoolean(IS_PIN, false) ?: false
     fun savePin(pin: String) = prefs?.edit()?.putString(PIN, pin)?.putBoolean(IS_PIN, true)?.apply()

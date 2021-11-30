@@ -19,12 +19,14 @@
     <string name="enter_password">Enter the password</string>
     <string name="repeat_the_password">Repeat the password</string>
     <string name="enter_login">Enter the login</string>
+    <string name="enter_name_and_surname">Enter name and surname</string>
     <string name="ok">It is clear</string>
     <string name="fill_fields">Fill in the fields</string>
     <string name="birthday">Date of registration</string>
-    <string name="rate_us">Rate the application</string>
+    <string name="rate_us">Change background</string>
     <string name="share_app">Share the application</string>
     <string name="error_email_length">Fill in the login. Login length must be at least 4</string>
+    <string name="error_credential_length">Fill in the your credential. Credential length must be at least 4</string>
     <string name="error_password_length">Fill in the password. The password must be at least 4 in length long</string>
     <string name="get_courses">Attend classes, pass all tests and get to the next lesson</string>
     <string name="logout">Exit</string>
