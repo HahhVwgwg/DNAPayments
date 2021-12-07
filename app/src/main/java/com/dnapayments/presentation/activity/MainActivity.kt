@@ -24,6 +24,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
             }
             navView.setupWithNavController(findNavController(R.id.nav_host_fragment_main))
         }
+        prefsAuth.setAuthorized(true)
     }
 
     fun toggleVisibility(value: Boolean) {
