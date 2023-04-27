@@ -85,4 +85,18 @@
         <item name="cornerSizeTopRight">@dimen/_15sdp</item>
     </style>
 
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:windowEnterAnimation">@anim/my_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/my_slide_down</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="behavior_peekHeight">600dp</item>
+    </style>
+
 </resources>

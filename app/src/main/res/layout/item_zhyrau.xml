@@ -10,7 +10,7 @@
     android:paddingHorizontal="16dp"
     android:paddingVertical="8dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <com.github.siyamed.shapeimageview.CircularImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="80dp"
@@ -20,8 +20,6 @@
         app:layout_constraintDimensionRatio="H,4:4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
-        app:shapeAppearanceOverlay="@style/ShapeAllBorder"
         app:srcCompat="@drawable/ic_document_placeholder" />
 
     <TextView

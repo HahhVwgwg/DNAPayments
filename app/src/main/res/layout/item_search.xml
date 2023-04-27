@@ -30,6 +30,7 @@
         android:fontFamily="@font/sf_pro_display_medium"
         android:textSize="14sp"
         android:textStyle="italic"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/headerTextView"

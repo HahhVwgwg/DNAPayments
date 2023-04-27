@@ -1,34 +1,36 @@
 package com.dnapayments.presentation.profile
 
 import android.os.Bundle
-import androidx.appcompat.widget.SearchView
 import com.dnapayments.R
 import com.dnapayments.databinding.FragmentSearchBinding
+import com.dnapayments.utils.afterTextChangedDebounce
 import com.dnapayments.utils.base.BaseBindingFragment
 import org.koin.android.ext.android.inject
 
 class SearchFragment :
     BaseBindingFragment<FragmentSearchBinding>(R.layout.fragment_search) {
+
     private val vm: SearchViewModel by inject()
+
+    private val searchAdapter = SearchAdapter {
+
+    }
+
     override fun initViews(savedInstanceState: Bundle?) {
         initSearchView()
+        initRecyclerView()
+        vm.searchResults.observe(viewLifecycleOwner) {
+            searchAdapter.setData(it)
+        }
+    }
+
+    private fun initRecyclerView() = with(binding) {
+        recyclerView.adapter = searchAdapter
     }
 
     private fun initSearchView() = with(binding) {
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                callSearch(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                callSearch(newText)
-                return true
-            }
-
-            fun callSearch(query: String) {
-                vm.onSearch(query)
-            }
-        })
+        searchView.afterTextChangedDebounce {
+            vm.onSearch(it)
+        }
     }
 }
