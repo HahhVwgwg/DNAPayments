@@ -1,19 +1,19 @@
 package com.dnapayments.data.repository
 
 import com.dnapayments.R
-import com.dnapayments.data.api_clients.ICharacterDetailsService
 import com.dnapayments.data.Resource
-import com.dnapayments.data.model.Character
+import com.dnapayments.data.api_clients.SearchService
+import com.dnapayments.domain.presentation.SearchResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class CharacterDetailedRepository(private val service: ICharacterDetailsService) {
-    suspend fun fetchCharacterById(id: Int):
-            Resource<List<Character>> {
+class SearchRepository(private val service: SearchService) {
+    suspend fun makeQuery(query: String):
+            Resource<String> {
         return try {
             withContext(Dispatchers.IO) {
-                val result = service.getCharacterDetailedAsync(
-                    id
+                val result = service.getSearchResultsAsync(
+                    query
                 ).await()
                 Resource.success(result)
             }

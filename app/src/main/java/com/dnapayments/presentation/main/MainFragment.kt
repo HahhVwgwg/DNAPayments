@@ -11,6 +11,7 @@ import com.dnapayments.domain.presentation.Story
 import com.dnapayments.presentation.activity.StoryActivity
 import com.dnapayments.presentation.details.DetailsFragment.Companion.ZHYRAU
 import com.dnapayments.utils.base.BaseBindingFragment
+import com.google.firebase.firestore.FirebaseFirestore
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class MainFragment :

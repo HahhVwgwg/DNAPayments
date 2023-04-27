@@ -18,7 +18,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

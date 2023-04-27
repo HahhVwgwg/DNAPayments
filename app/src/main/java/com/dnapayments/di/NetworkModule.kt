@@ -1,6 +1,6 @@
 //import com.readystatesoftware.chuck.ChuckInterceptor
 import android.content.Context
-import com.dnapayments.data.api_clients.ICharacterDetailsService
+import com.dnapayments.data.api_clients.SearchService
 import com.dnapayments.data.api_clients.ICharacterListService
 import com.dnapayments.utils.Constants
 import com.google.gson.GsonBuilder
@@ -24,7 +24,7 @@ val networkModule = module {
     }
     single {
         val retrofit: Retrofit = get()
-        retrofit.create(ICharacterDetailsService::class.java) as ICharacterDetailsService
+        retrofit.create(SearchService::class.java) as SearchService
     }
 }
 
