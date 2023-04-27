@@ -1,7 +1,7 @@
 package com.dnapayments.data.repository
 
 import com.dnapayments.R
-import com.dnapayments.api_clients.ICharacterDetailsService
+import com.dnapayments.data.api_clients.ICharacterDetailsService
 import com.dnapayments.data.Resource
 import com.dnapayments.data.model.Character
 import kotlinx.coroutines.Dispatchers

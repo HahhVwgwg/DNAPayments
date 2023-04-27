@@ -1,7 +1,7 @@
 //import com.readystatesoftware.chuck.ChuckInterceptor
 import android.content.Context
-import com.dnapayments.api_clients.ICharacterDetailsService
-import com.dnapayments.api_clients.ICharacterListService
+import com.dnapayments.data.api_clients.ICharacterDetailsService
+import com.dnapayments.data.api_clients.ICharacterListService
 import com.dnapayments.utils.Constants
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

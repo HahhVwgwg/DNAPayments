@@ -26,4 +26,6 @@
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#11CFC5</color>
     <color name="bg_main">#F6F8FB</color>
+
+    <color name="greyBorderColor">#EAEAEC</color>
 </resources>

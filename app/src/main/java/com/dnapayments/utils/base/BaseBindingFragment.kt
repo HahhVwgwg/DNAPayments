@@ -17,7 +17,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding>(@LayoutRes private val l
     }
 
     //  Your view data binding
-    var binding: B? = null
+    lateinit var binding: B
 
     //  Bind all widgets and start code
     protected abstract fun initViews(savedInstanceState: Bundle?)
@@ -28,18 +28,12 @@ abstract class BaseBindingFragment<B : ViewDataBinding>(@LayoutRes private val l
         savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layoutResID, container, false)
-        return binding?.root
+        return binding.root
     }
 
     // Initialize all widget in layout by ID
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) =
         initViews(savedInstanceState)
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        if (binding != null)
-            binding = null
-    }
 
     fun onBackPressed() {
         if (activity is MainActivity) {

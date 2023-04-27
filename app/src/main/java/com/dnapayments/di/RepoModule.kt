@@ -1,8 +1,10 @@
 import com.dnapayments.data.repository.CharacterDetailedRepository
-import com.dnapayments.data.repository.CharacterRepository
+import com.dnapayments.data.repository.StoriesRepository
+import com.dnapayments.data.repository.ZhyrauRepository
 import org.koin.dsl.module
 
 val repoModule = module {
-    single { CharacterRepository(get()) }
+    single { ZhyrauRepository() }
+    single { StoriesRepository(get()) }
     single { CharacterDetailedRepository(get()) }
 }
